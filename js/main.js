@@ -4,14 +4,8 @@ var app = {};
 var $geolocation = [];
 
 
-
-function noLocation(error) {
-    alert("No location info available. Error code: " + error.code);
-}
-
-
 app.getGeo = function(){
-	$.geolocation.get({win: app.updatePosition, fail: noLocation});
+	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
 };
 
 app.updatePosition = function(position) {
@@ -19,6 +13,14 @@ app.updatePosition = function(position) {
 	$geolocation[1] = position.coords.longitude;
 
 }
+
+app.geoError = function(){
+	 alert("No location info available. Error code: " + error.code);
+};
+
+
+
+
 
 app.init = function (){
 	app.getGeo();
