@@ -1,6 +1,4 @@
 # ttcApp
-app for the TTC 
+App created for a client using TTC, Google Maps, and Google Places APIs
 
-This is the read me so you can join!
-
-We Are Amazing
+By: We Are Amazing
