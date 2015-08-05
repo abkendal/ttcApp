@@ -3,7 +3,7 @@
 var app = {};
 
 app.init = function (){
-
+	
 };
 
 $(function(){
