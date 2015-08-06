@@ -7,6 +7,7 @@ var closestStopsURI = [];
 var map;
 
 
+
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
 };
@@ -16,6 +17,13 @@ app.initialize = function () {
 	  zoom: 16,
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
+
+	var marker = new google.maps.Marker({
+	    position: new google.maps.LatLng($geolocation[0],$geolocation[1]),
+	    title:"You are Here!"
+	});
+
+	marker.setMap(map);
 }
 
 
