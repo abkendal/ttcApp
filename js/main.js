@@ -69,11 +69,18 @@ $(function(){
 
 
 var map;
+var marker;
 function initialize() {
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
+  map = new google.maps.Map(document.getElementById('mapCanvas'), {
+    zoom: 18,
+    center: {lat: 43.648, lng: -79.398}
   });
+
+  marker = new google.maps.Marker({
+  	position: new google.maps.LatLng(43.648, -79.398),
+  	title: "Hello World!"
+  });
+  marker.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
