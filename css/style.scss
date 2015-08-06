@@ -8,8 +8,9 @@
 @import "neat/neat";
 
 
-#map-canvas {
+html, body, #map-canvas {
         height: 500px;
+        // width: 800px;
         margin: 0;
         padding: 0;
       }
