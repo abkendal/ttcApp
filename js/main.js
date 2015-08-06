@@ -14,6 +14,14 @@ app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
 };
 
+app.updatePosition = function(position) {
+	$geolocation[0] = position.coords.latitude;
+	$geolocation[1] = position.coords.longitude;
+	app.getStops($geolocation[0], $geolocation[1]);
+	console.log($geolocation);
+	app.initialize();
+};
+
 app.initialize = function () {
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
 	  zoom: 16,
@@ -25,16 +33,6 @@ app.initialize = function () {
 	});
 	marker.setMap(map);
 }
-
-
-app.updatePosition = function(position) {
-	$geolocation[0] = position.coords.latitude;
-	$geolocation[1] = position.coords.longitude;
-	app.getStops($geolocation[0], $geolocation[1]);
-	console.log($geolocation);
-	app.initialize();
-};
-
 
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
@@ -106,19 +104,4 @@ $(function(){
 	app.init();
 	app.displayStops();
 });
-
-
-
-function initialize() {
-  map = new google.maps.Map(document.getElementById('mapCanvas'), {
-    zoom: 18,
-    center: {lat: 43.648, lng: -79.398}
-  });
-
-  marker = new google.maps.Marker({
-  	position: new google.maps.LatLng(43.648, -79.398),
-  	title: "Hello World!"
-  });
-  marker.setMap(map);
-}
 
