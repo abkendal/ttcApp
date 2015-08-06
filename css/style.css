@@ -139,16 +139,28 @@ html {
 *::before {
   box-sizing: inherit; }
 
+html {
+  position: relative;
+  min-height: 100%; }
+
 html, body {
+  font-family: 'Merriweather', serif;
+  color: #5195C2;
   margin: 0;
   padding: 0;
   text-align: center; }
 
-section {
+body {
+  margin: 0 0 100px; }
+
+h1, h2, h3 {
+  font-family: 'Archivo Narrow', sans-serif; }
+
+.outerWrapper {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto; }
-  section::after {
+  .outerWrapper::after {
     clear: both;
     content: "";
     display: table; }
@@ -172,14 +184,35 @@ button {
   border-radius: 5px;
   background: #fff;
   color: #5195C2;
-  padding: 30px 30px;
+  padding: 20px 20px;
   font-size: 25px; }
 
-.suggestionContainer {
+.resultsSection {
+  border-top: 50px solid #4A4E4F; }
+
+.stopDistance {
+  margin: 2% 0;
+  border-radius: 5px;
+  padding: 2%;
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 100%; }
+  width: 65.88078%;
+  margin-left: 17.05961%; }
+  .stopDistance:last-child {
+    margin-right: 0; }
+
+.suggestionContainer {
+  background: #D96466;
+  color: #fff;
+  margin: 3% 0;
+  border-radius: 5px;
+  padding: 2%;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 17.05961%; }
   .suggestionContainer:last-child {
     margin-right: 0; }
 
@@ -198,3 +231,13 @@ button {
     width: 23.23176%; }
     .buttonsContainer .buttonBox:last-child {
       margin-right: 0; }
+
+footer {
+  background: #4A4E4F;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  font-family: 'Archivo Narrow', sans-serif;
+  color: #fff; }
