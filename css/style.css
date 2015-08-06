@@ -166,7 +166,7 @@ section {
   height: 500px;
   width: 100%; }
 
-#map-canvas {
+html, body, #map-canvas {
   height: 500px;
   margin: 0;
   padding: 0; }
