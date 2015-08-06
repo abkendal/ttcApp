@@ -30,19 +30,22 @@ app.getStops = function(lat, lon){
 				closestStopsName[i] = response.locations[i].name;
 				closestStopsURI[i] = response.locations[i].uri;
 			};
-			
+		app.displayStops();
 		}
 	})
 };
 //DISPLAYING API RESULTS IN DROPDOWN
 app.displayStops = function(){
-	console.log(1);
-	for (var i = 0; i < closestStopsName.length; i++){
-		$(".closestStops").append(closestStopsName[i], closestStopsName[i], closestStopsName[i]);
-		console.log(2);
-	};
-	console.log(3);
+	var $firstOption = $("<option>").val($(this)).text("select your stop");
+	$("#closestStops").append($firstOption);
+	$.each (closestStopsName, function(index, item){
+	var $option = $("<option>").val(item).text(item);
+	$("#closestStops").append($option);
+	console.log(closestStopsName);
+	});
+	
 };
+	console.log(3);
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
 	$.ajax({
@@ -54,8 +57,6 @@ app.getRoute = function(){
 		}
 	})
 };
-<<<<<<< HEAD
-=======
 
 app.getPlaces = function(lat, lon){
 	$.ajax({
@@ -75,16 +76,14 @@ app.getPlaces = function(lat, lon){
 	});
 };
 
-
->>>>>>> 4d88fec4304833c45b108751de4600037396760d
-
 app.init = function (){
 	app.getGeo();
+	app.getStops();
+	
 };
 
 $(function(){
 	app.init();
-	app.displayStops();
 });
 
 
