@@ -15,7 +15,7 @@ app.getGeo = function(){
 };
 
 app.initialize = function () {
-	map = new google.maps.Map(document.getElementById('map-canvas'), {
+	map = new google.maps.Map(document.getElementById('mapCanvas'), {
 	  zoom: 16,
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
@@ -58,7 +58,7 @@ app.getStops = function(lat, lon){
 app.displayStops = function(){
 	console.log(1);
 	for (var i = 0; i < closestStopsName.length; i++){
-		$(".closestStops").append(closestStopsName[i], closestStopsName[i], closestStopsName[i]);
+		$("#closestStops").append(closestStopsName[i], closestStopsName[i], closestStopsName[i]);
 		console.log(2);
 	};
 	console.log(3);
