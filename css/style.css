@@ -139,7 +139,7 @@ html {
 *::before {
   box-sizing: inherit; }
 
-html, body, #map-canvas {
+#map-canvas {
   height: 500px;
   margin: 0;
   padding: 0; }

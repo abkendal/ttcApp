@@ -4,17 +4,29 @@ var app = {};
 var $geolocation = [];
 var closestStopsName = [];
 var closestStopsURI = [];
+var map;
 
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
 };
 
+app.initialize = function () {
+	map = new google.maps.Map(document.getElementById('map-canvas'), {
+	  zoom: 16,
+	  center: {lat: $geolocation[0], lng: $geolocation[1]}
+	});
+}
+
+
 app.updatePosition = function(position) {
 	$geolocation[0] = position.coords.latitude;
 	$geolocation[1] = position.coords.longitude;
 	app.getStops($geolocation[0], $geolocation[1]);
+	console.log($geolocation);
+	app.initialize();
 };
+
 
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
@@ -65,13 +77,3 @@ $(function(){
 
 
 
-
-var map;
-function initialize() {
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
-  });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
