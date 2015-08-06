@@ -17,7 +17,7 @@ app.getGeo = function(){
 app.updatePosition = function(position) {
 	$geolocation[0] = position.coords.latitude;
 	$geolocation[1] = position.coords.longitude;
-	app.getStops($geolocation[0], $geolocation[1]);
+	// app.getStops($geolocation[0], $geolocation[1]);
 	console.log($geolocation);
 	app.initialize();
 };
@@ -27,51 +27,53 @@ app.initialize = function () {
 	  zoom: 16,
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
-	marker = new google.maps.Marker({
-		position: new google.maps.LatLng(43.648, -79.398),
-		title: "Hello World!"
-	});
-	marker.setMap(map);
+	// marker = new google.maps.Marker({
+	// 	position: new google.maps.LatLng($geolocation[0], $geolocation[1]),
+	// 	title: "Hello World!"
+	// });
+	// marker.setMap(map);
 }
 
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
 };
-//API REQUEST FOR STOPS
-app.getStops = function(lat, lon){
-	$.ajax({
-		url:'http://myttc.ca/near/' + lat + ',' + lon + '.json',
-		type: 'GET',
-		dataType: 'jsonp',
-		success: function(response){
-			for (var i =0; i<3; i++){
-				closestStopsName[i] = response.locations[i].name;
-				closestStopsURI[i] = response.locations[i].uri;
-			};
+
+// //API REQUEST FOR STOPS
+// app.getStops = function(lat, lon){
+// 	$.ajax({
+// 		url:'http://myttc.ca/near/' + lat + ',' + lon + '.json',
+// 		type: 'GET',
+// 		dataType: 'jsonp',
+// 		success: function(response){
+// 			for (var i =0; i<3; i++){
+// 				closestStopsName[i] = response.locations[i].name;
+// 				closestStopsURI[i] = response.locations[i].uri;
+// 			};
 			
-		}
-	})
-};
-//DISPLAYING API RESULTS IN DROPDOWN
-app.displayStops = function(){
-	console.log(1);
-	for (var i = 0; i < closestStopsName.length; i++){
-		$(".closestStops").append(closestStopsName[i], closestStopsName[i], closestStopsName[i]);
-		console.log(2);
-	};
-	console.log(3);
-};
-//API REQUEST FOR ROUTES
-app.getRoute = function(){
-	$.ajax({
-		url: "http://myttc.ca/vehicles/near/" + userStop + ".json",
-		type: "GET",
-		dataType: "jsonp",
-		success: function(returns){
-			console.log(returns);
-		}
-	})
-};
+// 		}
+// 	})
+// };
+
+// //DISPLAYING API RESULTS IN DROPDOWN
+// app.displayStops = function(){
+// 	console.log(1);
+// 	for (var i = 0; i < closestStopsName.length; i++){
+// 		$(".closestStops").append(closestStopsName[i], closestStopsName[i], closestStopsName[i]);
+// 		console.log(2);
+// 	};
+// 	console.log(3);
+// };
+// //API REQUEST FOR ROUTES
+// app.getRoute = function(){
+// 	$.ajax({
+// 		url: "http://myttc.ca/vehicles/near/" + userStop + ".json",
+// 		type: "GET",
+// 		dataType: "jsonp",
+// 		success: function(returns){
+// 			console.log(returns);
+// 		}
+// 	})
+// };
 
 
 app.getPlaces = function(lat, lon){
@@ -102,6 +104,6 @@ app.init = function (){
 
 $(function(){
 	app.init();
-	app.displayStops();
+	// app.displayStops();
 });
 
