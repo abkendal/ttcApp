@@ -7,10 +7,32 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 
+// MAP STYLES
+// ****************************
+html, body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
 
-html, body, #map-canvas {
-        height: 500px;
-        // width: 800px;
-        margin: 0;
-        padding: 0;
-      }
+ section {
+ 	@include outer-container;
+ }
+
+// MAP STYLES
+// ****************************
+.mapContainer {
+	@include span-columns(8);
+	@include shift(2);
+}
+#mapCanvas {
+	height: 500px;
+	width: 100%;
+}
+
+
+// SUGGESTIONS STYLES
+// ****************************
+.suggestionContainer, .buttonsContainer {
+	@include span-columns(12);
+}

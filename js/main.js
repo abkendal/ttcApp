@@ -1,9 +1,11 @@
 // TTC App JS File
+// API Key: AIzaSyCQILEPhJaXY7iLnSr2B_vtomrIRSg6kI4
 
 var app = {};
 var $geolocation = [];
 var closestStopsName = [];
 var closestStopsURI = [];
+
 
 
 app.getGeo = function(){
@@ -78,8 +80,10 @@ app.getPlaces = function(lat, lon){
 
 >>>>>>> 4d88fec4304833c45b108751de4600037396760d
 
+
 app.init = function (){
 	app.getGeo();
+	
 };
 
 $(function(){
@@ -88,14 +92,19 @@ $(function(){
 });
 
 
-
-
 var map;
+var marker;
 function initialize() {
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
+  map = new google.maps.Map(document.getElementById('mapCanvas'), {
+    zoom: 18,
+    center: {lat: 43.648, lng: -79.398}
   });
+
+  marker = new google.maps.Marker({
+  	position: new google.maps.LatLng(43.648, -79.398),
+  	title: "Hello World!"
+  });
+  marker.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
