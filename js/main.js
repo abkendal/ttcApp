@@ -41,10 +41,10 @@ app.displayStops = function(){
 	$.each (closestStopsName, function(index, item){
 	var $option = $("<option>").val(item).text(item);
 	$("#closestStops").append($option);
-	console.log(closestStopsName);
 	});
-	
+	console.log(select.$option)
 };
+
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
 	$.ajax({
