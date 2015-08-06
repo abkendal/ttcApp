@@ -49,7 +49,7 @@ app.getStops = function(lat, lon){
 };
 //DISPLAYING API RESULTS IN DROPDOWN
 app.displayStops = function(){
-	var $firstOption = $("<option>").val($(this)).text("select your stop");
+	var $firstOption = $("<option>").val($(this)).text("Select Your Stop");
 	$("#closestStops").append($firstOption);
 	$.each (closestStopsName, function(index, item){
 	var $option = $("<option>").val(item).text(item);

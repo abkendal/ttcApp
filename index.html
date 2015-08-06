@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>TTC APP</title>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather|Archivo+Narrow:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -21,13 +22,14 @@
 	</section>
 
 	<section class="resultsSection">
-		<div class="stopDistance">Lorem ipsum dolor sit amet.</div>
+		<div class="outerWrapper">
+		<div class="stopDistance">Closest Stop: 5 minute walk</div>
 		<div class="mapContainer">
 			<div id="mapCanvas"></div>
 			<!-- GOOGLE MAPS EMBED HERE -->
 		</div>
 		<div class="suggestionContainer">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, laudantium.</p>
+			<p>The Next Bus is in 15 minutes. You should explore!</p>
 		</div>
 		<div class="buttonsContainer">
 			<div class="buttonBox">
@@ -45,7 +47,13 @@
 				</button>
 			</div>
 		</div>
+		</div>
+		
 	</section>
+
+	<footer>
+		<p>2015 &copy; Adam Kendall, Christina Fung, &amp; Jeanne Schiller</p>
+	</footer>
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script> -->

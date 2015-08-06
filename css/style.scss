@@ -9,19 +9,37 @@
 
 // VARIABLES
 // ****************************
+$red: #D96466;
 $blue: #5195C2;
+$black: #4A4E4F; 
 
-// MAP STYLES
+// GENERAL STYLES
 // ****************************
+html {
+	position: relative;
+	min-height: 100%;	
+}
+
 html, body {
+	font-family: 'Merriweather', serif;
+	color: $blue;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
- section {
+body {
+	margin: 0 0 100px;
+}
+
+h1, h2, h3 {
+	font-family: 'Archivo Narrow', sans-serif;
+}
+
+ .outerWrapper {
  	@include outer-container;
  }
+
 
 // MAP STYLES
 // ****************************
@@ -43,13 +61,32 @@ button {
 	border-radius: 5px;
 	background: #fff;
 	color: $blue;
-	padding: 30px 30px;
+	padding: 20px 20px;
 	font-size: 25px;
 }
-// SUGGESTIONS STYLES
+
+// RESULTS SECTION STYLES
 // ****************************
+.resultsSection {
+	border-top: 50px solid $black;
+}
+
+.stopDistance {
+	margin: 2% 0;
+	border-radius: 5px;
+	padding: 2%;
+	@include span-columns(8);
+	@include shift(2);
+}
+
 .suggestionContainer {
-	@include span-columns(12);
+	background: $red;
+	color: #fff;
+	margin: 3% 0;
+	border-radius: 5px;
+	padding: 2%;
+	@include span-columns(8);
+	@include shift(2);
 }
 
 .buttonsContainer {
@@ -61,4 +98,15 @@ button {
 	}
 }
 
-
+// FOOTER STYLES
+// ****************************
+footer {
+	background: $black;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    font-family: 'Archivo Narrow', sans-serif;
+    color: #fff;
+}
