@@ -54,14 +54,10 @@ app.displayStops = function(){
 	$.each (closestStopsName, function(index, item){
 	var $option = $("<option>").val(item).text(item);
 	$("#closestStops").append($option);
-<<<<<<< HEAD
 	});
-	console.log(select.$option)
-=======
 	console.log(closestStopsName);
 	});
-	
->>>>>>> 9c7cec0a7a2e4a11735bda75eee3b599b9f06e4e
+
 };
 
 //API REQUEST FOR ROUTES
@@ -94,11 +90,7 @@ app.getPlaces = function(lat, lon){
 	});
 };
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 9c7cec0a7a2e4a11735bda75eee3b599b9f06e4e
 app.init = function (){
 	app.getGeo();
 	app.getStops();
