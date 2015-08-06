@@ -1,13 +1,10 @@
 // TTC App JS File
-// API Key: AIzaSyCQILEPhJaXY7iLnSr2B_vtomrIRSg6kI4
 
 var app = {};
 var $geolocation = [];
 var closestStopsName = [];
 var closestStopsURI = [];
 var map;
-var marker;
-
 
 
 app.getGeo = function(){
@@ -19,11 +16,6 @@ app.initialize = function () {
 	  zoom: 16,
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
-	marker = new google.maps.Marker({
-		position: new google.maps.LatLng(43.648, -79.398),
-		title: "Hello World!"
-	});
-	marker.setMap(map);
 }
 
 
@@ -39,6 +31,7 @@ app.updatePosition = function(position) {
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
 };
+
 //API REQUEST FOR STOPS
 app.getStops = function(lat, lon){
 	$.ajax({
@@ -50,19 +43,22 @@ app.getStops = function(lat, lon){
 				closestStopsName[i] = response.locations[i].name;
 				closestStopsURI[i] = response.locations[i].uri;
 			};
-			
+		app.displayStops();
 		}
 	})
 };
 //DISPLAYING API RESULTS IN DROPDOWN
 app.displayStops = function(){
-	console.log(1);
-	for (var i = 0; i < closestStopsName.length; i++){
-		$("#closestStops").append(closestStopsName[i], closestStopsName[i], closestStopsName[i]);
-		console.log(2);
-	};
-	console.log(3);
+	var $firstOption = $("<option>").val($(this)).text("select your stop");
+	$("#closestStops").append($firstOption);
+	$.each (closestStopsName, function(index, item){
+	var $option = $("<option>").val(item).text(item);
+	$("#closestStops").append($option);
+	});
+	console.log(closestStopsName);
+	});
 };
+
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
 	$.ajax({
@@ -74,7 +70,6 @@ app.getRoute = function(){
 		}
 	})
 };
-
 
 app.getPlaces = function(lat, lon){
 	$.ajax({
@@ -95,30 +90,15 @@ app.getPlaces = function(lat, lon){
 };
 
 
-
-
 app.init = function (){
 	app.getGeo();
+	app.getStops();
 	
 };
 
 $(function(){
 	app.init();
-	app.displayStops();
 });
 
 
-
-function initialize() {
-  map = new google.maps.Map(document.getElementById('mapCanvas'), {
-    zoom: 18,
-    center: {lat: 43.648, lng: -79.398}
-  });
-
-  marker = new google.maps.Marker({
-  	position: new google.maps.LatLng(43.648, -79.398),
-  	title: "Hello World!"
-  });
-  marker.setMap(map);
-}
 
