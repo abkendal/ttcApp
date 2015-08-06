@@ -1,0 +1,24 @@
+{
+  "name": "ttcApp",
+  "version": "1.0.0",
+  "description": "While you wait: An app for the TTC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abkendal/ttcApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abkendal/ttcApp/issues"
+  },
+  "homepage": "https://github.com/abkendal/ttcApp",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.0.4"
+  }
+}
