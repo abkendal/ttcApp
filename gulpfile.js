@@ -9,9 +9,6 @@ gulp.task('styles', function(){
 			.pipe(gulp.dest('css/'));
 });
 
-
-
-
 gulp.task('watch', function() {
 	gulp.watch('css/*.scss', ['styles']);
 });

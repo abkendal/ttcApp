@@ -1,9 +1,11 @@
 // TTC App JS File
+// API Key: AIzaSyCQILEPhJaXY7iLnSr2B_vtomrIRSg6kI4
 
 var app = {};
 var $geolocation = [];
 var closestStopsName = [];
 var closestStopsURI = [];
+
 
 
 app.getGeo = function(){
@@ -36,10 +38,13 @@ app.getStops = function(lat, lon){
 };
 
 
+
 app.init = function (){
 	app.getGeo();
+	
 };
 
 $(function(){
 	app.init();
 });
+
