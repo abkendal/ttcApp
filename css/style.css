@@ -176,6 +176,13 @@ html {
   box-sizing: inherit;
 }
 
+<<<<<<< HEAD
 body {
   background: white;
 }
+=======
+html, body, #map-canvas {
+  height: 500px;
+  margin: 0;
+  padding: 0; }
+>>>>>>> 4d88fec4304833c45b108751de4600037396760d
