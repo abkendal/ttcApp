@@ -166,6 +166,11 @@ section {
   height: 500px;
   width: 100%; }
 
+#map-canvas {
+  height: 500px;
+  margin: 0;
+  padding: 0; }
+
 .suggestionContainer, .buttonsContainer {
   float: left;
   display: block;

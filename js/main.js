@@ -5,6 +5,8 @@ var app = {};
 var $geolocation = [];
 var closestStopsName = [];
 var closestStopsURI = [];
+var map;
+var marker;
 
 
 
@@ -12,11 +14,27 @@ app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
 };
 
+app.initialize = function () {
+	map = new google.maps.Map(document.getElementById('map-canvas'), {
+	  zoom: 16,
+	  center: {lat: $geolocation[0], lng: $geolocation[1]}
+	});
+	marker = new google.maps.Marker({
+		position: new google.maps.LatLng(43.648, -79.398),
+		title: "Hello World!"
+	});
+	marker.setMap(map);
+}
+
+
 app.updatePosition = function(position) {
 	$geolocation[0] = position.coords.latitude;
 	$geolocation[1] = position.coords.longitude;
 	app.getStops($geolocation[0], $geolocation[1]);
+	console.log($geolocation);
+	app.initialize();
 };
+
 
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
@@ -56,8 +74,7 @@ app.getRoute = function(){
 		}
 	})
 };
-<<<<<<< HEAD
-=======
+
 
 app.getPlaces = function(lat, lon){
 	$.ajax({
@@ -78,7 +95,6 @@ app.getPlaces = function(lat, lon){
 };
 
 
->>>>>>> 4d88fec4304833c45b108751de4600037396760d
 
 
 app.init = function (){
@@ -92,8 +108,7 @@ $(function(){
 });
 
 
-var map;
-var marker;
+
 function initialize() {
   map = new google.maps.Map(document.getElementById('mapCanvas'), {
     zoom: 18,
@@ -107,4 +122,3 @@ function initialize() {
   marker.setMap(map);
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
