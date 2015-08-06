@@ -45,7 +45,6 @@ app.displayStops = function(){
 	});
 	
 };
-	console.log(3);
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
 	$.ajax({
