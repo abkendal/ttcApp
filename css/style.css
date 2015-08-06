@@ -139,7 +139,42 @@ html {
 *::before {
   box-sizing: inherit; }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  text-align: center; }
+
+section {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  section::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.mapContainer {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 17.05961%; }
+  .mapContainer:last-child {
+    margin-right: 0; }
+
+#mapCanvas {
+  height: 500px;
+  width: 100%; }
+
 html, body, #map-canvas {
   height: 500px;
   margin: 0;
   padding: 0; }
+
+.suggestionContainer, .buttonsContainer {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .suggestionContainer:last-child, .buttonsContainer:last-child {
+    margin-right: 0; }
