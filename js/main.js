@@ -56,8 +56,6 @@ app.displayStops = function(){
 	$("#closestStops").append($option);
 	});
 	console.log(closestStopsName);
-	});
-
 };
 
 //API REQUEST FOR ROUTES

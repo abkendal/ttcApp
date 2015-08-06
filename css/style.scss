@@ -7,6 +7,10 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 
+// VARIABLES
+// ****************************
+$blue: #5195C2;
+
 // MAP STYLES
 // ****************************
 html, body {
@@ -25,23 +29,36 @@ html, body {
 	@include span-columns(8);
 	@include shift(2);
 }
+
 #mapCanvas {
 	height: 500px;
 	width: 100%;
 }
 
-
-
-html, body, #map-canvas {
-        height: 500px;
-        // width: 800px;
-        margin: 0;
-        padding: 0;
-      }
-
+// BUTTON STYLES
+// ****************************
+button {
+	border: none;
+	border: 2px solid $blue;
+	border-radius: 5px;
+	background: #fff;
+	color: $blue;
+	padding: 30px 30px;
+	font-size: 25px;
+}
 // SUGGESTIONS STYLES
 // ****************************
-.suggestionContainer, .buttonsContainer {
+.suggestionContainer {
 	@include span-columns(12);
 }
+
+.buttonsContainer {
+	@include span-columns(12);
+	@include shift(1.5);
+
+	.buttonBox {
+		@include span-columns(3);
+	}
+}
+
 

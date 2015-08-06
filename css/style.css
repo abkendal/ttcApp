@@ -166,15 +166,35 @@ section {
   height: 500px;
   width: 100%; }
 
-html, body, #map-canvas {
-  height: 500px;
-  margin: 0;
-  padding: 0; }
+button {
+  border: none;
+  border: 2px solid #5195C2;
+  border-radius: 5px;
+  background: #fff;
+  color: #5195C2;
+  padding: 30px 30px;
+  font-size: 25px; }
 
-.suggestionContainer, .buttonsContainer {
+.suggestionContainer {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 100%; }
-  .suggestionContainer:last-child, .buttonsContainer:last-child {
+  .suggestionContainer:last-child {
     margin-right: 0; }
+
+.buttonsContainer {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-left: 12.79471%; }
+  .buttonsContainer:last-child {
+    margin-right: 0; }
+  .buttonsContainer .buttonBox {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%; }
+    .buttonsContainer .buttonBox:last-child {
+      margin-right: 0; }
