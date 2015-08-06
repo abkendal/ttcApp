@@ -12,7 +12,7 @@ app.getGeo = function(){
 };
 
 app.initialize = function () {
-	map = new google.maps.Map(document.getElementById('map-canvas'), {
+	map = new google.maps.Map(document.getElementById('mapCanvas'), {
 	  zoom: 16,
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
@@ -32,17 +32,40 @@ app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
 };
 
+//API REQUEST FOR STOPS
 app.getStops = function(lat, lon){
 	$.ajax({
 		url:'http://myttc.ca/near/' + lat + ',' + lon + '.json',
 		type: 'GET',
 		dataType: 'jsonp',
 		success: function(response){
-			console.log(response);
 			for (var i =0; i<3; i++){
 				closestStopsName[i] = response.locations[i].name;
 				closestStopsURI[i] = response.locations[i].uri;
-			}
+			};
+		app.displayStops();
+		}
+	})
+};
+//DISPLAYING API RESULTS IN DROPDOWN
+app.displayStops = function(){
+	var $firstOption = $("<option>").val($(this)).text("select your stop");
+	$("#closestStops").append($firstOption);
+	$.each (closestStopsName, function(index, item){
+	var $option = $("<option>").val(item).text(item);
+	$("#closestStops").append($option);
+	console.log(closestStopsName);
+	});
+	
+};
+//API REQUEST FOR ROUTES
+app.getRoute = function(){
+	$.ajax({
+		url: "http://myttc.ca/vehicles/near/" + userStop + ".json",
+		type: "GET",
+		dataType: "jsonp",
+		success: function(returns){
+			console.log(returns);
 		}
 	})
 };
