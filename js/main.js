@@ -54,6 +54,29 @@ app.getRoute = function(){
 		}
 	})
 };
+<<<<<<< HEAD
+=======
+
+app.getPlaces = function(lat, lon){
+	$.ajax({
+		url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {
+			key: 'AIzaSyArRVZ-NVkbo5_Ux1AKg7ChSny27D7EtYo',
+			location:lat+","+lon,
+			rankby: 'distance',
+			type: 'cafe',
+			opennow: ''
+		},
+		success: function(response) {
+			console.log(response);
+		}
+	});
+};
+
+
+>>>>>>> 4d88fec4304833c45b108751de4600037396760d
 
 app.init = function (){
 	app.getGeo();
@@ -63,3 +86,16 @@ $(function(){
 	app.init();
 	app.displayStops();
 });
+
+
+
+
+var map;
+function initialize() {
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 8,
+    center: {lat: -34.397, lng: 150.644}
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
