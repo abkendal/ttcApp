@@ -156,6 +156,15 @@ body {
 h1, h2, h3 {
   font-family: 'Archivo Narrow', sans-serif; }
 
+.nav {
+  background: #4A4E4F;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10vh;
+  width: 100%;
+  color: white; }
+
 .outerWrapper {
   max-width: 68em;
   margin-left: auto;
@@ -186,9 +195,6 @@ button {
   color: #5195C2;
   padding: 20px 20px;
   font-size: 25px; }
-
-.resultsSection {
-  border-top: 50px solid #4A4E4F; }
 
 .stopDistance {
   margin: 2% 0;
@@ -237,7 +243,7 @@ footer {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 50px;
+  height: 5vh;
   width: 100%;
   font-family: 'Archivo Narrow', sans-serif;
   color: #fff; }
