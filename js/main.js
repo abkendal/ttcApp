@@ -23,7 +23,7 @@ app.getGeo = function(){
 
 app.initialize = function () {
 	map = new google.maps.Map(document.getElementById('mapCanvas'), {
-	  zoom: 16,
+	  zoom: 18, //increased zoom so that users can see store type icons - can change later
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
 
@@ -160,12 +160,11 @@ app.displayRoute = function(long_name){
 // };
 
 app.getPlaces = function() {
-	console.log(map);
 	var request = {
 	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
 	    // rankBy: google.maps.places.RankBy.DISTANCE,
-	    radius: 200,
-	    types: ['cafe', 'hospital']
+	    radius: 100, 
+	    types: ['cafe', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant']
 	  };
 
 	  infowindow = new google.maps.InfoWindow();
@@ -181,11 +180,17 @@ app.getPlaces = function() {
 	  }
 
 	  function createMarker(place) {
+	  	console.log(place);
 	    var marker = new google.maps.Marker({
 	      map: map,
 	      icon: 'http://maps.google.com/mapfiles/ms/micons/green-dot.png',
 	      position: place.geometry.location
 	    });
+
+	    google.maps.event.addListener(marker, 'click', function() {
+	        infowindow.setContent(place.name);
+	        infowindow.open(map, this);
+	      });
 	  };
 };
 
