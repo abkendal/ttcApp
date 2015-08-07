@@ -102,13 +102,13 @@ app.displayStopMarker = function() {
 	stopMarker.setMap(map);
 };
 //SELECT STOP
-app.selectedStop = function(){
-	$option.on("click", function(e){
-		e.preventDefault();
-		var $stop = $(this).$option;
-		console.log($stop);
-	});
-}; //end of selected stop
+// app.selectedStop = function(){
+// 	$option.on("click", function(e){
+// 		e.preventDefault();
+// 		var $stop = $(this).$option;
+// 		console.log($stop);
+// 	});
+// }; //end of selected stop
 
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
@@ -121,6 +121,7 @@ app.getRoute = function(){
 		}
 	})
 };
+
 
 //Commented out by Christina
 // app.getPlaces = function(lat, lon){
@@ -166,7 +167,7 @@ app.getPlaces = function() {
 	    icon: 'http://maps.google.com/mapfiles/ms/micons/blue-dot.png',
 	    position: place.geometry.location
 	  });
-};
+	};
 
 app.init = function (){
 	app.getGeo();
