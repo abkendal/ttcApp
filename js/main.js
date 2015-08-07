@@ -7,6 +7,12 @@ var closestStopsURI = [];
 var closestStopsLat = [];
 var closestStopsLng = [];
 var map;
+var userStopInfo = [];
+ //USER STOP INFO LEGEND: (please keep here for now!)
+ // userStopInfo[0] = name of selected stop
+ // userStopInfo[1] = URI of selected stop
+ // userStopInfo[2] = latitude of stop
+ // userStopInfo[3] = longitude of stop
 
 
 
@@ -57,9 +63,18 @@ app.getStops = function(lat, lon){
 				closestStopsLng[i] = response.locations[i].lng;
 			};
 		app.displayStops();
-		app.displayStopMarker();
 		}
 	})
+};
+
+//GET USER'S STOP CHOICE AND STORE THE DATA IN AN ARRAY
+app.getUserStop = function() {
+	$('#closestStops').on('change', function() {
+  		var selectedStop = $(this).val();
+  		userStopInfo.push(closestStopsName[selectedStop], closestStopsURI[selectedStop], closestStopsLat[selectedStop], closestStopsLng[selectedStop]);
+  		console.log(userStopInfo);
+  		app.displayStopMarker();
+	});
 };
 
 //DISPLAYING API RESULTS IN DROPDOWN
@@ -67,17 +82,18 @@ app.displayStops = function(){
 	var $firstOption = $("<option>").val($(this)).text("Select Your Stop");
 	$("#closestStops").append($firstOption);
 	$.each (closestStopsName, function(index, item){
-	var $option = $("<option>").val(item).text(item);
-	$("#closestStops").append($option);
+		var $option = $("<option>").val(index).text(item);
+		$("#closestStops").append($option);
 	});
 	console.log(closestStopsName);
-	});
+	app.getUserStop();
+	
 };
 
 // DISPLAYING SECOND MARKER FOR STOP
 app.displayStopMarker = function() {
 	var stopMarker = new google.maps.Marker({
-	    position: new google.maps.LatLng(43.647518,-79.3958),
+	    position: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
 	    icon: 'http://maps.google.com/mapfiles/ms/micons/blue-dot.png',
 	    title:"Your stop is here!"
 	});
