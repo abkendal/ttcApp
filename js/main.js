@@ -8,6 +8,7 @@ var closestStopsLat = [];
 var closestStopsLng = [];
 var map;
 var userStopInfo = [];
+var routeName = [];
  //USER STOP INFO LEGEND: (please keep here for now!)
  // userStopInfo[0] = name of selected stop
  // userStopInfo[1] = URI of selected stop
@@ -75,6 +76,7 @@ app.getUserStop = function() {
   		console.log(userStopInfo);
   		app.displayStopMarker();
   		app.getPlaces();
+  		app.getRoute();
 	});
 };
 
@@ -113,13 +115,28 @@ app.displayStopMarker = function() {
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
 	$.ajax({
-		url: "http://myttc.ca/vehicles/near/" + userStop + ".json",
+		url: "http://myttc.ca/vehicles/near/" + userStopInfo[1] + ".json",
 		type: "GET",
 		dataType: "jsonp",
+		data: {
+			vehicles: [],
+		},
 		success: function(returns){
-			console.log(returns);
-		}
+			app.filterRouteName(returns);
+		}	
 	})
+};
+app.filterRouteName = function(routes){
+	var $firstRouteOption = $("<option>").val($(this)).text("Select Your Route");
+	$("#routesAtStop").append($firstRouteOption);
+	for(i = 0; i < routes.vehicles.length; i++){
+		app.displayRoute(routes.vehicles[i].long_name);
+	}
+};
+app.displayRoute = function(long_name){
+	var $routeName = $("<option>").val($(this)).text(long_name);
+	$("#routesAtStop").append($routeName);
+	console.log(long_name);
 };
 
 
