@@ -7,20 +7,29 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-	<header class="openingScreen">
+<body class= "clearfix">
+	<div class="nav clearfix">
+	</div>
+	<section class="openingScreen">
 		<img src="" alt="" class="logo">
-	</header>
-
+	</section> <!--changed header to section jeanne -->
+<!-- User Select Stop-->
 	<section class="inputSection">
 		<div class="userInput">
 			<select id="closestStops">
 				<!-- INJECT CLOSEST STOPS BASED ON USER'S GEOLOCATION HERE -->
 			</select>
-			
 		</div>
 	</section>
-
+<!-- User Select Route-->
+	<section class="inputSection">
+		<div class="userInput">
+			<select id="routesAtStop">
+				<!-- INJECT  ROUTES BASED ON USER'S SELECTED STOP -->
+			</select>
+		</div>
+	</section>	
+<!--Results Page-->
 	<section class="resultsSection">
 		<div class="outerWrapper">
 		<div class="stopDistance">Closest Stop: 5 minute walk</div>

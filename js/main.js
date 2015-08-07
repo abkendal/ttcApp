@@ -100,6 +100,14 @@ app.displayStopMarker = function() {
 
 	stopMarker.setMap(map);
 };
+//SELECT STOP
+app.selectedStop = function(){
+	$option.on("click", function(e){
+		e.preventDefault();
+		var $stop = $(this).$option;
+		console.log($stop);
+	});
+}; //end of selected stop
 
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
