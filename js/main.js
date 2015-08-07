@@ -71,6 +71,7 @@ app.displayStops = function(){
 	$("#closestStops").append($option);
 	});
 	console.log(closestStopsName);
+	});
 };
 
 // DISPLAYING SECOND MARKER FOR STOP
@@ -114,10 +115,8 @@ app.getPlaces = function(lat, lon){
 	});
 };
 
-
 app.init = function (){
 	app.getGeo();
-	app.getStops();
 	
 };
 
