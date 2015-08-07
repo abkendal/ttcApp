@@ -143,31 +143,36 @@ app.getRoute = function(){
 // };
 
 app.getPlaces = function() {
+	console.log(map);
 	var request = {
 	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
-	    radius: 100,
-	    types: ['cafe']
+	    // rankBy: google.maps.places.RankBy.DISTANCE,
+	    radius: 200,
+	    types: ['cafe', 'hospital']
 	  };
+
 	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
 	  service.nearbySearch(request, callback);
-	}
 
-	function callback(results, status) {
-	  if (status == google.maps.places.PlacesServiceStatus.OK) {
-	    for (var i = 0; i < results.length; i++) {
-	      createMarker(results[i]);
+	  function callback(results, status) {
+	    if (status == google.maps.places.PlacesServiceStatus.OK) {
+	      for (var i = 0; i < results.length; i++) {
+	        createMarker(results[i]);
+	      }
 	    }
 	  }
-	}
 
-	function createMarker(place) {
-	  var marker = new google.maps.Marker({
-	    map: map,
-	    icon: 'http://maps.google.com/mapfiles/ms/micons/blue-dot.png',
-	    position: place.geometry.location
-	  });
-	};
+	  function createMarker(place) {
+	    var marker = new google.maps.Marker({
+	      map: map,
+	      icon: 'http://maps.google.com/mapfiles/ms/micons/green-dot.png',
+	      position: place.geometry.location
+	    });
+	  };
+};
+
+	
 
 app.init = function (){
 	app.getGeo();
