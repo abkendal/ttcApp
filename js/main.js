@@ -60,12 +60,18 @@ app.displayStops = function(){
 	var $firstOption = $("<option>").val($(this)).text("Select Your Stop");
 	$("#closestStops").append($firstOption);
 	$.each (closestStopsName, function(index, item){
-	var $option = $("<option>").val(item).text(item);
-	$("#closestStops").append($option);
-	});
-	console.log(closestStopsName);
-	});
+		var $option = $("<option>").val(item).text(item);
+		$("#closestStops").append($option);
+	});//end of each loop
 };
+//SELECT STOP
+app.selectedStop = function(){
+	$option.on("click", function(e){
+		e.preventDefault();
+		var $stop = $(this).$option;
+		console.log($stop);
+	});
+}; //end of selected stop
 
 //API REQUEST FOR ROUTES
 app.getRoute = function(){
