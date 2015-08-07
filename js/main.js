@@ -64,6 +64,7 @@ app.displayStops = function(){
 	$("#closestStops").append($option);
 	});
 	console.log(closestStopsName);
+	});
 };
 
 //API REQUEST FOR ROUTES
@@ -95,7 +96,6 @@ app.getPlaces = function(lat, lon){
 		}
 	});
 };
-
 
 app.init = function (){
 	app.getGeo();
