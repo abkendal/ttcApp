@@ -4,6 +4,8 @@ var app = {};
 var $geolocation = [];
 var closestStopsName = [];
 var closestStopsURI = [];
+var closestStopsLat = [];
+var closestStopsLng = [];
 var map;
 
 
@@ -20,6 +22,7 @@ app.initialize = function () {
 
 	var marker = new google.maps.Marker({
 	    position: new google.maps.LatLng($geolocation[0],$geolocation[1]),
+	    icon: 'http://maps.google.com/mapfiles/ms/micons/red-dot.png',
 	    title:"You are Here!"
 	});
 
@@ -50,11 +53,15 @@ app.getStops = function(lat, lon){
 			for (var i =0; i<3; i++){
 				closestStopsName[i] = response.locations[i].name;
 				closestStopsURI[i] = response.locations[i].uri;
+				closestStopsLat[i] = response.locations[i].lat;
+				closestStopsLng[i] = response.locations[i].lng;
 			};
 		app.displayStops();
+		app.displayStopMarker();
 		}
 	})
 };
+
 //DISPLAYING API RESULTS IN DROPDOWN
 app.displayStops = function(){
 	var $firstOption = $("<option>").val($(this)).text("Select Your Stop");
@@ -65,6 +72,17 @@ app.displayStops = function(){
 	});
 	console.log(closestStopsName);
 	});
+};
+
+// DISPLAYING SECOND MARKER FOR STOP
+app.displayStopMarker = function() {
+	var stopMarker = new google.maps.Marker({
+	    position: new google.maps.LatLng(43.647518,-79.3958),
+	    icon: 'http://maps.google.com/mapfiles/ms/micons/blue-dot.png',
+	    title:"Your stop is here!"
+	});
+
+	stopMarker.setMap(map);
 };
 
 //API REQUEST FOR ROUTES
