@@ -35,7 +35,15 @@ body {
 h1, h2, h3 {
 	font-family: 'Archivo Narrow', sans-serif;
 }
-
+.nav{
+	background: $black;
+	position: absolute;
+    left: 0;
+    top: 0;
+    height: 10vh;
+    width: 100%;
+    color: white;
+}
  .outerWrapper {
  	@include outer-container;
  }
@@ -67,9 +75,12 @@ button {
 
 // RESULTS SECTION STYLES
 // ****************************
-.resultsSection {
-	border-top: 50px solid $black;
-}
+
+//commented out by jeanne - adding this as a top border for page
+//instead of section specific.
+// .resultsSection {
+// 	border-top: 50px solid $black;
+// }
 
 .stopDistance {
 	margin: 2% 0;
@@ -105,7 +116,7 @@ footer {
 	position: absolute;
     left: 0;
     bottom: 0;
-    height: 50px;
+    height: 5vh;
     width: 100%;
     font-family: 'Archivo Narrow', sans-serif;
     color: #fff;
