@@ -121,22 +121,27 @@ app.getRoute = function(){
 	})
 };
 
+// app.getPlaces = function(lat, lon){
+// 	$.ajax({
+// 		url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+// 		type: 'GET',
+// 		dataType: 'jsonp',
+// 		data: {
+// 			key: 'AIzaSyArRVZ-NVkbo5_Ux1AKg7ChSny27D7EtYo',
+// 			location:lat+","+lon,
+// 			rankby: 'distance',
+// 			type: 'cafe',
+// 			opennow: ''
+// 		},
+// 		success: function(response) {
+// 			console.log(response);
+// 		}
+// 	});
+// };
+
+
 app.getPlaces = function(lat, lon){
-	$.ajax({
-		url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-		type: 'GET',
-		dataType: 'jsonp',
-		data: {
-			key: 'AIzaSyArRVZ-NVkbo5_Ux1AKg7ChSny27D7EtYo',
-			location:lat+","+lon,
-			rankby: 'distance',
-			type: 'cafe',
-			opennow: ''
-		},
-		success: function(response) {
-			console.log(response);
-		}
-	});
+
 };
 
 app.init = function (){
