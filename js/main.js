@@ -75,6 +75,7 @@ app.getUserStop = function() {
   		userStopInfo.push(closestStopsName[selectedStop], closestStopsURI[selectedStop], closestStopsLat[selectedStop], closestStopsLng[selectedStop]);
   		console.log(userStopInfo);
   		app.displayStopMarker();
+  		app.getPlaces();
   		app.getRoute();
 	});
 };
@@ -138,11 +139,13 @@ app.displayRoute = function(long_name){
 	console.log(long_name);
 };
 
+
+//Commented out by Christina
 // app.getPlaces = function(lat, lon){
 // 	$.ajax({
 // 		url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
 // 		type: 'GET',
-// 		dataType: 'jsonp',
+// 		dataType: 'json',
 // 		data: {
 // 			key: 'AIzaSyArRVZ-NVkbo5_Ux1AKg7ChSny27D7EtYo',
 // 			location:lat+","+lon,
@@ -156,10 +159,37 @@ app.displayRoute = function(long_name){
 // 	});
 // };
 
+app.getPlaces = function() {
+	console.log(map);
+	var request = {
+	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
+	    // rankBy: google.maps.places.RankBy.DISTANCE,
+	    radius: 200,
+	    types: ['cafe', 'hospital']
+	  };
 
-app.getPlaces = function(lat, lon){
+	  infowindow = new google.maps.InfoWindow();
+	  var service = new google.maps.places.PlacesService(map);
+	  service.nearbySearch(request, callback);
 
+	  function callback(results, status) {
+	    if (status == google.maps.places.PlacesServiceStatus.OK) {
+	      for (var i = 0; i < results.length; i++) {
+	        createMarker(results[i]);
+	      }
+	    }
+	  }
+
+	  function createMarker(place) {
+	    var marker = new google.maps.Marker({
+	      map: map,
+	      icon: 'http://maps.google.com/mapfiles/ms/micons/green-dot.png',
+	      position: place.geometry.location
+	    });
+	  };
 };
+
+	
 
 app.init = function (){
 	app.getGeo();
