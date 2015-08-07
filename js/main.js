@@ -99,7 +99,6 @@ app.getPlaces = function(lat, lon){
 
 app.init = function (){
 	app.getGeo();
-	app.getStops();
 	
 };
 
