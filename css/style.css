@@ -165,6 +165,9 @@ h1, h2, h3 {
   width: 100%;
   color: white; }
 
+.inputSection {
+  margin-top: 10vh; }
+
 .outerWrapper {
   max-width: 68em;
   margin-left: auto;
