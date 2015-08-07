@@ -7,6 +7,7 @@ var closestStopsURI = [];
 var map;
 
 
+
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
 };
@@ -16,6 +17,13 @@ app.initialize = function () {
 	  zoom: 16,
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
+
+	var marker = new google.maps.Marker({
+	    position: new google.maps.LatLng($geolocation[0],$geolocation[1]),
+	    title:"You are Here!"
+	});
+
+	marker.setMap(map);
 }
 
 
@@ -49,7 +57,7 @@ app.getStops = function(lat, lon){
 };
 //DISPLAYING API RESULTS IN DROPDOWN
 app.displayStops = function(){
-	var $firstOption = $("<option>").val($(this)).text("select your stop");
+	var $firstOption = $("<option>").val($(this)).text("Select Your Stop");
 	$("#closestStops").append($firstOption);
 	$.each (closestStopsName, function(index, item){
 	var $option = $("<option>").val(item).text(item);
@@ -91,7 +99,6 @@ app.getPlaces = function(lat, lon){
 
 app.init = function (){
 	app.getGeo();
-	app.getStops();
 	
 };
 

@@ -7,17 +7,39 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 
-// MAP STYLES
+// VARIABLES
 // ****************************
+$red: #D96466;
+$blue: #5195C2;
+$black: #4A4E4F; 
+
+// GENERAL STYLES
+// ****************************
+html {
+	position: relative;
+	min-height: 100%;	
+}
+
 html, body {
+	font-family: 'Merriweather', serif;
+	color: $blue;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
- section {
+body {
+	margin: 0 0 100px;
+}
+
+h1, h2, h3 {
+	font-family: 'Archivo Narrow', sans-serif;
+}
+
+ .outerWrapper {
  	@include outer-container;
  }
+
 
 // MAP STYLES
 // ****************************
@@ -25,23 +47,66 @@ html, body {
 	@include span-columns(8);
 	@include shift(2);
 }
+
 #mapCanvas {
 	height: 500px;
 	width: 100%;
 }
 
-
-
-html, body, #map-canvas {
-        height: 500px;
-        // width: 800px;
-        margin: 0;
-        padding: 0;
-      }
-
-// SUGGESTIONS STYLES
+// BUTTON STYLES
 // ****************************
-.suggestionContainer, .buttonsContainer {
-	@include span-columns(12);
+button {
+	border: none;
+	border: 2px solid $blue;
+	border-radius: 5px;
+	background: #fff;
+	color: $blue;
+	padding: 20px 20px;
+	font-size: 25px;
 }
 
+// RESULTS SECTION STYLES
+// ****************************
+.resultsSection {
+	border-top: 50px solid $black;
+}
+
+.stopDistance {
+	margin: 2% 0;
+	border-radius: 5px;
+	padding: 2%;
+	@include span-columns(8);
+	@include shift(2);
+}
+
+.suggestionContainer {
+	background: $red;
+	color: #fff;
+	margin: 3% 0;
+	border-radius: 5px;
+	padding: 2%;
+	@include span-columns(8);
+	@include shift(2);
+}
+
+.buttonsContainer {
+	@include span-columns(12);
+	@include shift(1.5);
+
+	.buttonBox {
+		@include span-columns(3);
+	}
+}
+
+// FOOTER STYLES
+// ****************************
+footer {
+	background: $black;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    font-family: 'Archivo Narrow', sans-serif;
+    color: #fff;
+}
