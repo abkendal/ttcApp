@@ -29,8 +29,8 @@ html, body {
 }
 
 body {
-	margin: 0 0 100px;
-	height: 77vh;
+	margin: 0;
+	// height: 77vh;
 }
 
 h1, h2, h3 {
@@ -49,6 +49,48 @@ h1, h2, h3 {
     color: white;
 }
 
+//SLIDING NAV
+//************************************
+// .checkbox{
+// 	display: none;
+// }
+.nav_container{
+	position: relative;
+	height:100%;
+}
+// .dd-nav{
+// 	height: 90vh;
+// 	background: red;
+// 	width: 100%;
+// 	position: absolute;
+// 	top:7vh;
+// 	left:0;
+// 	transition: all 0.5s ease;
+// 	z-index: 10;
+// 	color: $white;
+// }		
+// #nav-check:checked + .nav_container{
+// 		left: 0;
+// }
+// #nav-check:checked ~ .nav_container{
+// 		left: 300px;
+// }
+
+// ul.dd-nav {
+// 	margin: 0;
+// 	padding: 5% 3%;
+	
+// }
+// .dd-nav_container{
+// 	border: 2px solid $white;
+// 	border-radius: 5px;
+// 	padding: 2%;
+// }
+// .dd-nav li{ 
+// 	display: block;
+// 	padding: 5% 0;
+// }
+//*****************************
 .inputSection{
 	margin-top:10vh;
 }
@@ -62,28 +104,15 @@ select{
 	border: none;
 	border-radius: 5px;
 	color: white;
-	width: auto;
+	width: 100%;
 	font-family: 'Archivo Narrow', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.25em;
-	// margin-bottom: 1%;
-	@include span-columns(8);
-	@include shift(2);
-	// line-height: 20px;
+	margin-bottom: 1%;
+	@include span-columns(7);
+	@include shift(2.5);
+	height:7vh;
 }
-// #closestStops.styles{
-// 	padding: 50px;
-// }
-// .styles{
-// 	padding: 50px;
-// }
-// .userInput{
-// 	padding: 50px;
-// }
-// select[target=_option]{
-// 	background-color: blue;
-// 	padding: 50px;
-// }
 // MAP STYLES
 // ****************************
 .mapContainer {
@@ -97,31 +126,39 @@ select{
 }
 
 
-// PLEACES BUTTON STYLES
+// PLACES BUTTON STYLES
 // ****************************
-.button-refresh{
+.skin-nav{
 	border: none;
 	background: none;
 	color: white;
 	height: 100%;
 	font-size: 25px;
+}
+.skin-nav:hover{
+	color: $red;
+}
+.skin-nav:focus{
+	color: $red;
+	outline: none;
+}
+.button-dd{
 	@include span-columns(1);
-	@include shift(11);
+	@include shift(0);
 }
-.button-refresh:hover{
-	color: $blue;
+.button-refresh{
+	@include span-columns(1);
+	@include shift(10);
 }
-.button-refresh:focus{
-	color: $blue;
-	border: none;
-}
+
 .button-places {
 	border: none;
 	border: 2px solid $blue;
 	border-radius: 5px;
 	background: #fff;
 	color: $blue;
-	padding: 20px 20px;
+	height: 10vh;
+	width: 10vh;
 	font-size: 25px;
 }
 .button-places:hover{
@@ -130,7 +167,7 @@ select{
 }
 .button-places:focus{
 	color: $red;
-	border: none;
+	outline: none;
 	border: 2px solid $red;
 }
 
@@ -142,20 +179,21 @@ select{
 // .resultsSection {
 // 	border-top: 50px solid $black;
 // }
-
-.stopDistance {
-	margin: 2% 0;
-	border-radius: 5px;
-	@include span-columns(8);
-	@include shift(2);
-}
+//commented out by jeanne - is this needed if we are only populating 
+//places near the stop?
+// .stopDistance {
+// 	margin: 2% 0;
+// 	border-radius: 5px;
+// 	@include span-columns(8);
+// 	@include shift(2);
+// }
 
 .suggestionContainer {
 	background: $red;
 	color: #fff;
-	margin: 2% 0;
+	margin: 1% 0;
 	border-radius: 5px;
-	padding: 1%;
+	padding:2%;
 	@include span-columns(8);
 	@include shift(2);
 }
