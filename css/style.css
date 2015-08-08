@@ -156,6 +156,39 @@ body {
 h1, h2, h3 {
   font-family: 'Archivo Narrow', sans-serif; }
 
+h1 {
+  font-size: 80px;
+  margin: 0;
+  padding: 0;
+  color: #D96466; }
+
+h2 {
+  font-size: 20px;
+  letter-spacing: 0.15em; }
+
+h3 {
+  font-size: 18px;
+  letter-spacing: 0.15em;
+  margin: 0;
+  padding: 0;
+  color: #4A4E4F; }
+
+.logo_initial {
+  position: absolute;
+  margin-top: 15vh;
+  height: 70vh;
+  width: 70vh;
+  background: white;
+  border: solid 50px #4A4E4F;
+  border-radius: 50%;
+  z-index: 50;
+  margin-left: 29.85432%; }
+
+.logo_text {
+  position: absolute;
+  bottom: 2vh;
+  margin-left: 34.11922%; }
+
 .nav {
   background: #4A4E4F;
   position: absolute;
@@ -164,6 +197,48 @@ h1, h2, h3 {
   height: 8vh;
   width: 100%;
   color: white; }
+
+h2 {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 8.5298%;
+  text-transform: lowercase; }
+  h2:last-child {
+    margin-right: 0; }
+
+.skin-nav {
+  border: none;
+  background: none;
+  color: white;
+  height: 100%;
+  font-size: 25px; }
+
+.skin-nav:hover {
+  color: #D96466; }
+
+.skin-nav:focus {
+  color: #D96466;
+  outline: none; }
+
+.button-dd {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 6.17215%;
+  margin-left: 0%; }
+  .button-dd:last-child {
+    margin-right: 0; }
+
+.button-refresh {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 6.17215%;
+  margin-left: 8.5298%; }
+  .button-refresh:last-child {
+    margin-right: 0; }
 
 .nav_container {
   position: relative;
@@ -212,38 +287,6 @@ select {
 #mapCanvas {
   height: 50vh;
   width: 100%; }
-
-.skin-nav {
-  border: none;
-  background: none;
-  color: white;
-  height: 100%;
-  font-size: 25px; }
-
-.skin-nav:hover {
-  color: #D96466; }
-
-.skin-nav:focus {
-  color: #D96466;
-  outline: none; }
-
-.button-dd {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 6.17215%;
-  margin-left: 0%; }
-  .button-dd:last-child {
-    margin-right: 0; }
-
-.button-refresh {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 6.17215%;
-  margin-left: 85.29804%; }
-  .button-refresh:last-child {
-    margin-right: 0; }
 
 .button-places {
   border: none;
