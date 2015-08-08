@@ -151,7 +151,8 @@ html, body {
   text-align: center; }
 
 body {
-  margin: 0 0 100px; }
+  margin: 0 0 100px;
+  height: 77vh; }
 
 h1, h2, h3 {
   font-family: 'Archivo Narrow', sans-serif; }
@@ -161,7 +162,7 @@ h1, h2, h3 {
   position: absolute;
   left: 0;
   top: 0;
-  height: 10vh;
+  height: 8vh;
   width: 100%;
   color: white; }
 
@@ -186,20 +187,13 @@ select {
   font-family: 'Archivo Narrow', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  line-height: 20px; }
-
-#closestStops.styles {
-  padding: 50px; }
-
-.styles {
-  padding: 50px; }
-
-.userInput {
-  padding: 50px; }
-
-select[target=_option] {
-  background-color: blue;
-  padding: 50px; }
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 17.05961%; }
+  select:last-child {
+    margin-right: 0; }
 
 .mapContainer {
   float: left;
@@ -211,10 +205,31 @@ select[target=_option] {
     margin-right: 0; }
 
 #mapCanvas {
-  height: 500px;
+  height: 50vh;
   width: 100%; }
 
-button {
+.button-refresh {
+  border: none;
+  background: none;
+  color: white;
+  height: 100%;
+  font-size: 25px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 6.17215%;
+  margin-left: 93.82785%; }
+  .button-refresh:last-child {
+    margin-right: 0; }
+
+.button-refresh:hover {
+  color: #5195C2; }
+
+.button-refresh:focus {
+  color: #5195C2;
+  border: none; }
+
+.button-places {
   border: none;
   border: 2px solid #5195C2;
   border-radius: 5px;
@@ -223,10 +238,18 @@ button {
   padding: 20px 20px;
   font-size: 25px; }
 
+.button-places:hover {
+  color: #D96466;
+  border: 2px solid #D96466; }
+
+.button-places:focus {
+  color: #D96466;
+  border: none;
+  border: 2px solid #D96466; }
+
 .stopDistance {
   margin: 2% 0;
   border-radius: 5px;
-  padding: 2%;
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -238,9 +261,9 @@ button {
 .suggestionContainer {
   background: #D96466;
   color: #fff;
-  margin: 3% 0;
+  margin: 2% 0;
   border-radius: 5px;
-  padding: 2%;
+  padding: 1%;
   float: left;
   display: block;
   margin-right: 2.35765%;
