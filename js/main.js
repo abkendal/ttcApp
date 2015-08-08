@@ -16,7 +16,8 @@ var routeName = [];
  // userStopInfo[3] = longitude of stop
  var userRouteInfo = [];
 
-
+//LOGO FADE IN AND OUT
+$('#overlay').fadeIn('fast').delay(700).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
