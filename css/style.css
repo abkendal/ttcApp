@@ -185,7 +185,21 @@ select {
   width: auto;
   font-family: 'Archivo Narrow', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.25em; }
+  letter-spacing: 0.25em;
+  line-height: 20px; }
+
+#closestStops.styles {
+  padding: 50px; }
+
+.styles {
+  padding: 50px; }
+
+.userInput {
+  padding: 50px; }
+
+select[target=_option] {
+  background-color: blue;
+  padding: 50px; }
 
 .mapContainer {
   float: left;
