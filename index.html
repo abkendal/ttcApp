@@ -8,16 +8,42 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body class= "clearfix">
+<!-- Nav Bar -->	
 	<div class="nav clearfix">
-	<button class="button-refresh"><i class="fa fa-refresh"></i></button>
-	</div>
+		<div class="nav_container">	
+			<button class="skin-nav button-dd" for="nav-check">
+				<i class="fa fa-bars"></i>
+			</button>
+			<button class="skin-nav button-refresh">
+				<i class="fa fa-refresh"></i>
+			</button>
+		<!--	<input type="checkbox" id="nav-check" class="checkbox">
+				<ul class="dd-nav">
+					<div class="dd-nav_container">
+						<li>
+							<h2></h2>
+							<p></p>
+						</li>
+						<li>
+							<h2></h2>
+							<p></p>
+						</li>
+						<li>
+							<p>
+								<a href="http://adamkendal.ca/">Adam Kendall</a>, <a href="http://christinafung.com/">Christina Fung</a>, &amp;<a href="http://jeanneschiller.com/">Jeanne Schiller</a>
+							</p>
+						</li>
+					</div> <!-- end of dd-nav_container-->
+			<!--</ul> -->
+		</div><!--end of nav container -->	
+	</div> <!-- end of nav -->
 	<section class="openingScreen">
 		<img src="" alt="" class="logo">
 	</section> <!--changed header to section jeanne -->
 <!-- User Select Stop-->
 	<section class="inputSection">
 		<div class="userInput">
-			<select id="closestStops"class="styles" name="" title="Select title">
+			<select id="closestStops"class="styles">
 				<!-- INJECT CLOSEST STOPS BASED ON USER'S GEOLOCATION HERE -->
 			</select>
 		</div>
@@ -25,7 +51,7 @@
 <!-- User Select Route-->
 	<section class="inputSection"> 
 		<div class="userInput"> 
-			<select id="routesAtStop" class="styles" name="" title="Select title">
+			<select id="routesAtStop" class="styles">
 				<!-- INJECT  ROUTES BASED ON USER'S SELECTED STOP -->
 			</select>
 		</div>
@@ -33,7 +59,7 @@
 <!--Results Page-->
 	<section class="resultsSection">
 		<div class="outerWrapper">
-		<div class="stopDistance">Closest Stop: 5 minute walk</div>
+		<!-- <div class="stopDistance">Closest Stop: 5 minute walk</div> is this still needed? - jeanne -->
 		<div class="mapContainer">
 			<div id="mapCanvas"></div>
 			<!-- GOOGLE MAPS EMBED HERE -->
