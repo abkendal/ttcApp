@@ -50,8 +50,32 @@ h1, h2, h3 {
  .outerWrapper {
  	@include outer-container;
  }
-
-
+//DROP DOWN STYLES
+//*****************************
+select{
+	background: $red;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	width: auto;
+	font-family: 'Archivo Narrow', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.25em;
+	line-height: 20px;
+}
+#closestStops.styles{
+	padding: 50px;
+}
+.styles{
+	padding: 50px;
+}
+.userInput{
+	padding: 50px;
+}
+select[target=_option]{
+	background-color: blue;
+	padding: 50px;
+}
 // MAP STYLES
 // ****************************
 .mapContainer {
