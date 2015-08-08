@@ -177,6 +177,16 @@ h1, h2, h3 {
     content: "";
     display: table; }
 
+select {
+  background: #D96466;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  width: auto;
+  font-family: 'Archivo Narrow', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.25em; }
+
 .mapContainer {
   float: left;
   display: block;
