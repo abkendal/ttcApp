@@ -14,6 +14,7 @@ var routeName = [];
  // userStopInfo[1] = URI of selected stop
  // userStopInfo[2] = latitude of stop
  // userStopInfo[3] = longitude of stop
+ var userRouteInfo = [];
 
 
 
@@ -123,6 +124,7 @@ app.getRoute = function(){
 		}	
 	})
 };
+//FILTERING ROUTE OPTIONS
 app.filterRouteName = function(stops){
 	var $firstRouteOption = $("<option>").val($(this)).text("Select Your Route");
 	$("#routesAtStop").append($firstRouteOption);
@@ -131,36 +133,19 @@ app.filterRouteName = function(stops){
 		console.log(stops);
 	}
 };
+//DISPLAYING ROUTES IN DROP DOWN 
 app.displayRoute = function(routes){
 	var $routeName = $("<option>").val($(this)).text(routes);
 	$("#routesAtStop").append($routeName);
-	console.log("3 is all alone");
+	app.getUserRoute();
 };
-//API REQUEST FOR ROUTES #1
-// app.getRoute = function(){
-// 	$.ajax({
-// 		url: "http://myttc.ca/vehicles/near/" + userStopInfo[1] + ".json",
-// 		type: "GET",
-// 		dataType: "jsonp",
-// 		data: {
-// 			vehicles: [],
-// 		},
-// 		success: function(returns){
-// 			app.filterRouteName(returns);
-// 		}	
-// 	})
-// };
-// app.filterRouteName = function(routes){
-// 	var $firstRouteOption = $("<option>").val($(this)).text("Select Your Route");
-// 	$("#routesAtStop").append($firstRouteOption);
-// 	for(i = 0; i < routes.vehicles.length; i++){
-// 		app.displayRoute(routes.vehicles[i].long_name);
-// 	}
-// };
-// app.displayRoute = function(long_name){
-// 	var $routeName = $("<option>").val($(this)).text(long_name);
-// 	$("#routesAtStop").append($routeName);
-// 	console.log(long_name);
+//STORE SELECTED ROUTE IN VARIABLE
+// app.getUserRoute = function(userRoute) {
+// 	$('#routesAtStop').on('change', function() {
+//   		var selectedRoute = $(this).val();
+//   		userRouteInfo.push(selectedRoute.stops.routes.stop_times[0].departure_time);
+// 		console.log(userRoute);
+// 	});
 // };
 
 //Commented out by Christina
