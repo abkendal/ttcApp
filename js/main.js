@@ -14,8 +14,10 @@ var routeName = [];
  // userStopInfo[1] = URI of selected stop
  // userStopInfo[2] = latitude of stop
  // userStopInfo[3] = longitude of stop
+ var userRouteInfo = [];
 
-
+//LOGO FADE IN AND OUT
+$('#overlay').fadeIn('fast').delay(700).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
@@ -49,6 +51,11 @@ app.updatePosition = function(position) {
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
 };
+//DROP DOWN STYLES
+$(function(){
+	$('select.styled').addClass("customSelect");
+});
+
 
 //API REQUEST FOR STOPS
 app.getStops = function(lat, lon){
@@ -103,42 +110,44 @@ app.displayStopMarker = function() {
 
 	stopMarker.setMap(map);
 };
-//SELECT STOP
-// app.selectedStop = function(){
-// 	$option.on("click", function(e){
-// 		e.preventDefault();
-// 		var $stop = $(this).$option;
-// 		console.log($stop);
-// 	});
-// }; //end of selected stop
-
-//API REQUEST FOR ROUTES
+//API ROUTES #2
 app.getRoute = function(){
 	$.ajax({
-		url: "http://myttc.ca/vehicles/near/" + userStopInfo[1] + ".json",
+		url: "http://myttc.ca/" + userStopInfo[1] + ".json",
 		type: "GET",
 		dataType: "jsonp",
 		data: {
-			vehicles: [],
+			routes: [],
 		},
 		success: function(returns){
 			app.filterRouteName(returns);
+			console.log("working");
 		}	
 	})
 };
-app.filterRouteName = function(routes){
+//FILTERING ROUTE OPTIONS
+app.filterRouteName = function(stops){
 	var $firstRouteOption = $("<option>").val($(this)).text("Select Your Route");
 	$("#routesAtStop").append($firstRouteOption);
-	for(i = 0; i < routes.vehicles.length; i++){
-		app.displayRoute(routes.vehicles[i].long_name);
+	for(i = 0; i < stops.stops[0].routes.length; i++){
+		app.displayRoute(stops.stops[0].routes[i].uri);
+		console.log(stops);
 	}
 };
-app.displayRoute = function(long_name){
-	var $routeName = $("<option>").val($(this)).text(long_name);
+//DISPLAYING ROUTES IN DROP DOWN 
+app.displayRoute = function(routes){
+	var $routeName = $("<option>").val($(this)).text(routes);
 	$("#routesAtStop").append($routeName);
-	console.log(long_name);
+	app.getUserRoute();
 };
-
+//STORE SELECTED ROUTE IN VARIABLE
+// app.getUserRoute = function(userRoute) {
+// 	$('#routesAtStop').on('change', function() {
+//   		var selectedRoute = $(this).val();
+//   		userRouteInfo.push(selectedRoute.stops.routes.stop_times[0].departure_time);
+// 		console.log(userRoute);
+// 	});
+// };
 
 //Commented out by Christina
 // app.getPlaces = function(lat, lon){
@@ -180,7 +189,7 @@ app.getPlaces = function() {
 	  }
 
 	  function createMarker(place) {
-	  	console.log(place);
+	  	// console.log(place);
 	    var marker = new google.maps.Marker({
 	      map: map,
 	      icon: 'http://maps.google.com/mapfiles/ms/micons/green-dot.png',

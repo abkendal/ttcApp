@@ -29,29 +29,171 @@ html, body {
 }
 
 body {
-	margin: 0 0 100px;
+	margin: 0;
+	// height: 77vh;
 }
 
 h1, h2, h3 {
 	font-family: 'Archivo Narrow', sans-serif;
 }
+h1{
+	font-size: 80px;
+	margin:0;
+	padding:0;
+	color: $red;
+	letter-spacing: -0.05em;
+}
+h2{
+	font-size: 20px;
+	letter-spacing: 0.15em;
+}
+h3{
+	font-size: 18px;
+	letter-spacing: 0.15em;
+	margin:0;
+	padding:0;
+	color: $black;
+}
+//INITILA LOGO STYLES
+//******************************
+#overlay{
+    display: none;
+    // visibility: hidden;
+    background: white;
+    @include span-columns(12);
+    height:100vh;
+    z-index: 49;
+}
+.logo_initial{
+	position:absolute;
+	margin-top:10vh;
+	height: 70vh;
+	width: 70vh;
+	background: white;
+	border: solid 50px $black;
+	border-radius: 50%;
+	z-index: 50;
+	@include shift(3.5);
+	overflow:hidden;
+	box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+.logo_svg{
+	margin-left:10px;
+	margin-top: 10vh;
+	width: 100%;
+	height:100%;
+}
+svg{
+	width: 110%;
+}
+.logo_text{
+	position:absolute;
+	bottom:2vh;
+	@include shift(4);
+}
+//NAV STYLES
+//******************************
 .nav{
 	background: $black;
 	position: absolute;
     left: 0;
     top: 0;
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     color: white;
 }
+h2{
+	@include span-columns(8);
+	@include shift(1);
+	text-transform: lowercase;
+	
+}
+.skin-nav{
+	border: none;
+	background: none;
+	color: white;
+	height: 100%;
+	font-size: 25px;
+}
+.skin-nav:hover{
+	color: $red;
+}
+.skin-nav:focus{
+	color: $red;
+	outline: none;
+}
+.button-dd{
+	@include span-columns(1);
+	@include shift(0);
+}
+.button-refresh{
+	@include span-columns(1);
+	@include shift(1);
+}
+//SLIDING NAV
+//************************************
+// .checkbox{
+// 	display: none;
+// }
+.nav_container{
+	position: relative;
+	height:100%;
+}
+// .dd-nav{
+// 	height: 90vh;
+// 	background: red;
+// 	width: 100%;
+// 	position: absolute;
+// 	top:7vh;
+// 	left:0;
+// 	transition: all 0.5s ease;
+// 	z-index: 10;
+// 	color: $white;
+// }		
+// #nav-check:checked + .nav_container{
+// 		left: 0;
+// }
+// #nav-check:checked ~ .nav_container{
+// 		left: 300px;
+// }
+
+// ul.dd-nav {
+// 	margin: 0;
+// 	padding: 5% 3%;
+	
+// }
+// .dd-nav_container{
+// 	border: 2px solid $white;
+// 	border-radius: 5px;
+// 	padding: 2%;
+// }
+// .dd-nav li{ 
+// 	display: block;
+// 	padding: 5% 0;
+// }
+//*****************************
 .inputSection{
 	margin-top:10vh;
 }
  .outerWrapper {
  	@include outer-container;
  }
-
-
+//DROP DOWN STYLES
+//*****************************
+select{
+	background: $red;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	width: 100%;
+	font-family: 'Archivo Narrow', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.25em;
+	margin-bottom: 1%;
+	@include span-columns(7);
+	@include shift(2.5);
+	height:7vh;
+}
 // MAP STYLES
 // ****************************
 .mapContainer {
@@ -60,20 +202,31 @@ h1, h2, h3 {
 }
 
 #mapCanvas {
-	height: 500px;
+	height: 50vh;
 	width: 100%;
 }
 
-// BUTTON STYLES
+
+// PLACES BUTTON STYLES
 // ****************************
-button {
+.button-places {
 	border: none;
 	border: 2px solid $blue;
 	border-radius: 5px;
 	background: #fff;
 	color: $blue;
-	padding: 20px 20px;
+	height: 10vh;
+	width: 10vh;
 	font-size: 25px;
+}
+.button-places:hover{
+	color: $red;
+	border: 2px solid $red;
+}
+.button-places:focus{
+	color: $red;
+	outline: none;
+	border: 2px solid $red;
 }
 
 // RESULTS SECTION STYLES
@@ -84,21 +237,21 @@ button {
 // .resultsSection {
 // 	border-top: 50px solid $black;
 // }
-
-.stopDistance {
-	margin: 2% 0;
-	border-radius: 5px;
-	padding: 2%;
-	@include span-columns(8);
-	@include shift(2);
-}
+//commented out by jeanne - is this needed if we are only populating 
+//places near the stop?
+// .stopDistance {
+// 	margin: 2% 0;
+// 	border-radius: 5px;
+// 	@include span-columns(8);
+// 	@include shift(2);
+// }
 
 .suggestionContainer {
 	background: $red;
 	color: #fff;
-	margin: 3% 0;
+	margin: 1% 0;
 	border-radius: 5px;
-	padding: 2%;
+	padding:2%;
 	@include span-columns(8);
 	@include shift(2);
 }
