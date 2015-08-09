@@ -1,2 +1,28 @@
 // TTC API App Project
 // Media Queries for Responsive Design
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+	select {
+		@include span-columns(8);
+		@include shift(2);
+		margin-bottom: 1.5%;
+	}
+
+	.suggestionContainer {
+		margin-top: 1.5%;
+		margin-bottom: 1.5%;
+	}
+
+	.buttonsContainer {
+		margin-bottom: 1.5%;
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}
