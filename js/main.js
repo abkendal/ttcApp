@@ -6,6 +6,7 @@ var closestStopsName = [];
 var closestStopsURI = [];
 var closestStopsLat = [];
 var closestStopsLng = [];
+var routeName = [];
 var map;
 var userStopInfo = [];
 var routeName = [];
@@ -108,7 +109,7 @@ app.displayStops = function(){
 		var $option = $("<option>").val(index).text(item);
 		$("#closestStops").append($option);
 	});
-	// console.log(closestStopsName);
+	console.log(closestStopsName);
 	app.getUserStop();
 	
 };
@@ -133,9 +134,12 @@ app.getRoute = function(){
 			routes: [],
 		},
 		success: function(returns){
+			for(var i = 0;i<returns.stops[0].routes.length; i++) {
+				routeName[i] = returns.stops[0].routes[i].name;
+			}
 			routeResponse = returns;
 			app.filterRouteName(returns);
-			// console.log(returns);
+			console.log(returns);
 		}	
 	})
 };
@@ -144,14 +148,14 @@ app.filterRouteName = function(stops){
 	var $firstRouteOption = $("<option>").val($(this)).text("2. Select Your Route");
 	$("#routesAtStop").append($firstRouteOption);
 	for(i = 0; i < stops.stops[0].routes.length; i++){
-		app.displayRoute(stops.stops[0].routes[i].uri);
+		app.displayRoute(stops.stops[0].routes[i].uri, i);
 		// console.log(stops);
 		// console.log(stops.stops[0].routes[i].uri);
 	}
 };
 //DISPLAYING ROUTES IN DROP DOWN 
-app.displayRoute = function(routes) {
-	var $routeName = $("<option>").val($(this)).text(routes);
+app.displayRoute = function(routes, key) {
+	var $routeName = $("<option>").val(key).text(routes);
 	$("#routesAtStop").append($routeName);
 	$('#routesAtStop').fadeIn('slow').removeClass('hide');
 	app.getUserRoute();
