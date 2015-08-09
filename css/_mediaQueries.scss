@@ -75,7 +75,7 @@
 		.suggestionBox {
 			@include span-columns(9);
 			@include shift(1.5);
-			padding: 5%;
+			padding: 3%;
 		}
 	}
 
@@ -111,9 +111,24 @@
 	
 	.nav_container {
 		.skin-nav {
-			font-size: 18px;
+			font-size: 20px;
 		}
 	}
+
+	select {
+		font-size: 14px;
+	}
+	
+	.suggestionContainer {
+		#suggestionText {
+			text-align: left;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+	}
+	
+
+
 	
 	.button-places {
 		height: 7.5vh;
