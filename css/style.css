@@ -460,7 +460,7 @@ footer {
       margin-right: 2.35765%;
       width: 74.41059%;
       margin-left: 12.79471%;
-      padding: 5%; }
+      padding: 3%; }
       .suggestionContainer .suggestionBox:last-child {
         margin-right: 0; }
   .buttonBox {
@@ -485,7 +485,13 @@ footer {
     .logo_initial .logo_text h3 {
       font-size: 12px; }
   .nav_container .skin-nav {
-    font-size: 18px; }
+    font-size: 20px; }
+  select {
+    font-size: 14px; }
+  .suggestionContainer #suggestionText {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.5; }
   .button-places {
     height: 7.5vh;
     width: 7.5vh;
