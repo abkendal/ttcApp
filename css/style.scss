@@ -127,7 +127,6 @@ h2{
 }
 .button-dd{
 	@include span-columns(1);
-	@include shift(0);
 }
 .button-refresh{
 	@include span-columns(1);
@@ -247,40 +246,31 @@ select{
 
 // RESULTS SECTION STYLES
 // ****************************
-
-//commented out by jeanne - adding this as a top border for page
-//instead of section specific.
-// .resultsSection {
-// 	border-top: 50px solid $black;
-// }
-//commented out by jeanne - is this needed if we are only populating 
-//places near the stop?
-// .stopDistance {
-// 	margin: 2% 0;
-// 	border-radius: 5px;
-// 	@include span-columns(8);
-// 	@include shift(2);
-// }
-// .resultsOverlay {
-// 	position: relative;
-// }
 .suggestionContainer {
-	background: $red;
-	color: #fff;
-	margin: 1% 0;
-	border-radius: 5px;
-	padding:2%;
-	@include span-columns(8);
-	@include shift(2);
+	@include span-columns(12);
+
+	.suggestionBox {
+		background: $red;
+		color: #fff;
+		margin: 1% 0;
+		border-radius: 5px;
+		padding:2%;
+		@include span-columns(8);
+		@include shift(2);
+	}
 }
 
 .buttonsContainer {
 	@include span-columns(12);
-	@include shift(2);
 	margin-bottom: 1%;
 
+	.buttonBoxWrapper {
+		@include span-columns(8);
+		@include shift(2);
+	}
+
 	.buttonBox {
-		@include span-columns(2);
+		@include span-columns(2 of 8);
 	}
 }
 
