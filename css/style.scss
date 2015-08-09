@@ -29,7 +29,8 @@ html, body {
 }
 
 body {
-	margin: 0;
+	margin: 0 0 5vh;
+	//The 5vh is needed to make a sticky footer! Please leave on. :)
 	// height: 77vh;
 }
 
@@ -53,11 +54,6 @@ h3{
 	margin:0;
 	padding:0;
 	color: $black;
-}
-//HIDE CLASS
-//******************************
-.hide {
-	display: none;
 }
 
 //INITIAL LOGO STYLES
@@ -184,6 +180,8 @@ h2{
  .outerWrapper {
  	@include outer-container;
  }
+
+
 //DROP DOWN STYLES
 //*****************************
 select{
@@ -191,7 +189,7 @@ select{
 	border: none;
 	border-radius: 5px;
 	color: white;
-	width: 100%;
+	// width: 100%;
 	font-family: 'Archivo Narrow', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.25em;
@@ -205,6 +203,8 @@ select{
 .mapContainer {
 	@include span-columns(8);
 	@include shift(2);
+	position: relative;
+
 }
 
 #mapCanvas {
@@ -212,6 +212,20 @@ select{
 	width: 100%;
 }
 
+//This "hides" the map
+.mapCover {
+	position: absolute;
+	top: 0;
+	left: 0;
+    background: #fff;
+    height: 100%;
+    width: 101%; 
+    //Have to set the width slightly larger than 100% 
+    //to fully cover the map container
+    //the grid system sets its own weird margins 
+    //so i can't hide the map fully without 
+    //setting the width to 100%+ LOL
+}
 
 // PLACES BUTTON STYLES
 // ****************************
@@ -251,6 +265,9 @@ select{
 // 	@include span-columns(8);
 // 	@include shift(2);
 // }
+// .resultsOverlay {
+// 	position: relative;
+// }
 
 .suggestionContainer {
 	background: $red;
@@ -264,11 +281,18 @@ select{
 
 .buttonsContainer {
 	@include span-columns(12);
-	@include shift(1.5);
+	@include shift(2);
+	margin-bottom: 1%;
 
 	.buttonBox {
-		@include span-columns(3);
+		@include span-columns(2);
 	}
+}
+
+//HIDE CLASS
+//******************************
+.hide {
+	display: none;
 }
 
 // FOOTER STYLES

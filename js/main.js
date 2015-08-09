@@ -16,6 +16,13 @@ var routeName = [];
  // userStopInfo[3] = longitude of stop
  var userRouteInfo = [];
 
+//REFRESH FUNCTION
+app.refresh = function() {
+	$('.button-refresh').on('click', function() {
+		document.location.reload(true);
+	});
+}
+
 //LOGO FADE IN AND OUT
 $('#overlay').fadeIn('fast').delay(700).fadeOut('slow');
 
@@ -24,8 +31,9 @@ app.getGeo = function(){
 };
 
 app.initialize = function () {
+	$('#closestStops').fadeIn('slow').removeClass('hide');
 	map = new google.maps.Map(document.getElementById('mapCanvas'), {
-	  zoom: 18, //increased zoom so that users can see store type icons - can change later
+	  zoom: 17, //increased zoom so that users can see store type icons - can change later
 	  center: {lat: $geolocation[0], lng: $geolocation[1]}
 	});
 
@@ -85,13 +93,13 @@ app.getUserStop = function() {
   		app.getPlaces();
   		app.getRoute();
   		// HIDE closestStops DROP-DOWN HERE
-  		$(this).fadeOut('slow').addClass('hide');
+  		// $(this).fadeOut('slow').addClass('hide');
 	});
 };
 
 //DISPLAYING API RESULTS IN DROPDOWN
 app.displayStops = function(){
-	var $firstOption = $("<option>").val($(this)).text("Select Your Stop");
+	var $firstOption = $("<option>").val($(this)).text("1. Select Your Stop");
 	$("#closestStops").append($firstOption);
 	$.each (closestStopsName, function(index, item){
 		var $option = $("<option>").val(index).text(item);
@@ -129,7 +137,7 @@ app.getRoute = function(){
 };
 //FILTERING ROUTE OPTIONS
 app.filterRouteName = function(stops){
-	var $firstRouteOption = $("<option>").val($(this)).text("Select Your Route");
+	var $firstRouteOption = $("<option>").val($(this)).text("2. Select Your Route");
 	$("#routesAtStop").append($firstRouteOption);
 	for(i = 0; i < stops.stops[0].routes.length; i++){
 		app.displayRoute(stops.stops[0].routes[i].uri);
@@ -149,8 +157,10 @@ app.getUserRoute = function(userRoute) {
   		var selectedRoute = $(this).val();
   // 		userRouteInfo.push(selectedRoute.stops.routes.stop_times[0].departure_time);
 		// console.log(userRoute);
-		$('#routesAtStop').fadeOut('slow').addClass('hide');
-		$('.resultsSection').fadeIn('slow').removeClass('hide');
+		// $('#routesAtStop').fadeOut('slow').addClass('hide');
+		$('.mapCover').fadeOut('slow');
+		$('.suggestionContainer').fadeIn('slow').removeClass('hide');
+		$('.buttonsContainer').fadeIn('slow').removeClass('hide');
 	});
 };
 
@@ -208,19 +218,9 @@ app.getPlaces = function() {
 	  };
 };
 
-//LOADING FUNCTIONS
-app.loadingTest = function() {
-	$('.suggestionContainer').on('click', function() {
-		$(this).fadeOut('slow').addClass('hide');
-		$('#routesAtStop').fadeIn('slow').removeClass('hide');
-	});
-}
-
-	
-
 app.init = function (){
 	app.getGeo();
-	app.loadingTest();
+	app.refresh();
 	
 };
 
