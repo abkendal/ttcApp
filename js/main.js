@@ -215,7 +215,7 @@ app.compareTime = function(busTime, currentTime) {
 	minutesTillBus = (busTime - currentTime) / 60;
 	console.log(minutesTillBus);
 	var suggestionText = "You have " + minutesTillBus + " minutes until your next bus."
-	('#suggestionText').text(suggestionText);
+	$('#suggestionText').text(suggestionText);
 }
 
 
