@@ -110,10 +110,6 @@ svg{
 h2{
 	@include span-columns(8);
 	@include shift(1);
-<<<<<<< HEAD
-	
-=======
->>>>>>> b1952d5c4a9f8d31e750b9bd21f45099c38a977c
 }
 
 .skin-nav{
@@ -296,6 +292,10 @@ footer {
     width: 100%;
     font-family: 'Archivo Narrow', sans-serif;
     color: #fff;
+    p {
+    	margin: 0;
+    	padding: 8px;
+    }
 
     a {
     	text-decoration: none;

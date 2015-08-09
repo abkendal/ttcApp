@@ -398,6 +398,9 @@ footer {
   width: 100%;
   font-family: 'Archivo Narrow', sans-serif;
   color: #fff; }
+  footer p {
+    margin: 0;
+    padding: 8px; }
   footer a {
     text-decoration: none;
     color: #fff; }
