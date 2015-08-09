@@ -3,6 +3,10 @@
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+	.nav_container {
+		padding: 0 1%;
+	}
+
 	select {
 		@include span-columns(8);
 		@include shift(2);
@@ -12,6 +16,10 @@
 	.suggestionContainer {
 		margin-top: 1.5%;
 		margin-bottom: 1.5%;
+
+		.suggestionBox {
+			padding: 3%;
+		}
 	}
 
 	.buttonsContainer {
@@ -21,8 +29,118 @@
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+	.nav_container {
+		padding: 0 2%;
+	}
+
+	.buttonsContainer {
+		margin-bottom: 2%;
+	}
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+	.logo_initial {
+		height: 60vh;
+		width: 60vh;
+
+		.logo_text {
+			h1 {
+				font-size: 56px;
+			}
+
+			h3 {
+				font-size: 16px;
+			}
+		}
+	}
+
+	.nav_container {
+		.skin-nav {
+			font-size: 22px;
+		}
+	}
+
+	select, .mapContainer {
+		@include span-columns(9);
+		@include shift(1.5);
+	}
+
+	select, .buttonsContainer {
+		margin-bottom: 2.5%;
+	}
+
+	.suggestionContainer {
+		margin-top: 2.5%;
+		margin-bottom: 2.5%;
+
+		.suggestionBox {
+			@include span-columns(9);
+			@include shift(1.5);
+			padding: 3%;
+		}
+	}
+
+	.buttonBox {
+		@include span-columns(1.5 of 9);
+	}
+
+	.button-places {
+		height: 9vh;
+		width: 9vh;
+	
+	}
 }
+
+@media (max-width: 400px) {
+	.logo_initial {
+		height: 47vh;
+		width: 47vh;
+		
+		svg {
+			width: 95%;
+		}
+		.logo_text {
+			h1 {
+				font-size: 30px;
+			}
+
+			h3 {
+				font-size: 12px;
+			}
+		}
+	}
+	
+	.nav_container {
+		.skin-nav {
+			font-size: 20px;
+		}
+	}
+
+	select {
+		font-size: 14px;
+	}
+	
+	.suggestionContainer {
+		#suggestionText {
+			text-align: left;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+	}
+	
+
+
+	
+	.button-places {
+		height: 7.5vh;
+		width: 7.5vh;
+		font-size: 22px;
+	}
+}
+
+
+
+
+
+

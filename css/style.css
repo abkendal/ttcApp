@@ -252,8 +252,7 @@ h2 {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 6.17215%;
-  margin-left: 0%; }
+  width: 6.17215%; }
   .button-dd:last-child {
     margin-right: 0; }
 
@@ -343,33 +342,47 @@ select {
   border: 2px solid #D96466; }
 
 .suggestionContainer {
-  background: #D96466;
-  color: #fff;
-  margin: 1% 0;
-  border-radius: 5px;
-  padding: 2%;
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%;
-  margin-left: 17.05961%; }
+  width: 100%;
+  margin: 1% 0; }
   .suggestionContainer:last-child {
     margin-right: 0; }
+  .suggestionContainer .suggestionBox {
+    background: #D96466;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2%;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+    margin-left: 17.05961%; }
+    .suggestionContainer .suggestionBox:last-child {
+      margin-right: 0; }
 
 .buttonsContainer {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 100%;
-  margin-left: 17.05961%;
   margin-bottom: 1%; }
   .buttonsContainer:last-child {
     margin-right: 0; }
-  .buttonsContainer .buttonBox {
+  .buttonsContainer .buttonBoxWrapper {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 14.70196%; }
+    width: 65.88078%;
+    margin-left: 17.05961%; }
+    .buttonsContainer .buttonBoxWrapper:last-child {
+      margin-right: 0; }
+  .buttonsContainer .buttonBox {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 22.316%; }
     .buttonsContainer .buttonBox:last-child {
       margin-right: 0; }
 
@@ -393,6 +406,8 @@ footer {
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+  .nav_container {
+    padding: 0 1%; }
   select {
     float: left;
     display: block;
@@ -405,8 +420,81 @@ footer {
   .suggestionContainer {
     margin-top: 1.5%;
     margin-bottom: 1.5%; }
+    .suggestionContainer .suggestionBox {
+      padding: 3%; }
   .buttonsContainer {
     margin-bottom: 1.5%; } }
 
 /* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  .nav_container {
+    padding: 0 2%; }
+  .buttonsContainer {
+    margin-bottom: 2%; } }
+
 /* Landscape phones and down */
+@media (max-width: 480px) {
+  .logo_initial {
+    height: 60vh;
+    width: 60vh; }
+    .logo_initial .logo_text h1 {
+      font-size: 56px; }
+    .logo_initial .logo_text h3 {
+      font-size: 16px; }
+  .nav_container .skin-nav {
+    font-size: 22px; }
+  select, .mapContainer {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%;
+    margin-left: 12.79471%; }
+    select:last-child, .mapContainer:last-child {
+      margin-right: 0; }
+  select, .buttonsContainer {
+    margin-bottom: 2.5%; }
+  .suggestionContainer {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%; }
+    .suggestionContainer .suggestionBox {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%;
+      margin-left: 12.79471%;
+      padding: 3%; }
+      .suggestionContainer .suggestionBox:last-child {
+        margin-right: 0; }
+  .buttonBox {
+    float: left;
+    display: block;
+    margin-right: 3.16844%;
+    width: 14.0263%; }
+    .buttonBox:last-child {
+      margin-right: 0; }
+  .button-places {
+    height: 9vh;
+    width: 9vh; } }
+
+@media (max-width: 400px) {
+  .logo_initial {
+    height: 47vh;
+    width: 47vh; }
+    .logo_initial svg {
+      width: 95%; }
+    .logo_initial .logo_text h1 {
+      font-size: 30px; }
+    .logo_initial .logo_text h3 {
+      font-size: 12px; }
+  .nav_container .skin-nav {
+    font-size: 20px; }
+  select {
+    font-size: 14px; }
+  .suggestionContainer #suggestionText {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.5; }
+  .button-places {
+    height: 7.5vh;
+    width: 7.5vh;
+    font-size: 22px; } }
