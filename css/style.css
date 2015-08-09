@@ -320,7 +320,7 @@ select {
   left: 0;
   background: #fff;
   height: 100%;
-  width: 101%; }
+  width: 100%; }
 
 .button-places {
   border: none;
@@ -384,3 +384,28 @@ footer {
   width: 100%;
   font-family: 'Archivo Narrow', sans-serif;
   color: #fff; }
+  footer a {
+    text-decoration: none;
+    color: #fff; }
+  footer a:hover, footer a:focus, footer a:active {
+    color: #D96466; }
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+  select {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+    margin-left: 17.05961%;
+    margin-bottom: 1.5%; }
+    select:last-child {
+      margin-right: 0; }
+  .suggestionContainer {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%; }
+  .buttonsContainer {
+    margin-bottom: 1.5%; } }
+
+/* Landscape phone to portrait tablet */
+/* Landscape phones and down */

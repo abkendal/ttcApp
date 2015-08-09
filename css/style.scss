@@ -220,12 +220,7 @@ select{
 	left: 0;
     background: #fff;
     height: 100%;
-    width: 101%; 
-    //Have to set the width slightly larger than 100% 
-    //to fully cover the map container
-    //the grid system sets its own weird margins 
-    //so i can't hide the map fully without 
-    //setting the width to 100%+ LOL
+    width: 100%; 
 }
 
 // PLACES BUTTON STYLES
@@ -269,7 +264,6 @@ select{
 // .resultsOverlay {
 // 	position: relative;
 // }
-
 .suggestionContainer {
 	background: $red;
 	color: #fff;
@@ -307,6 +301,15 @@ footer {
     width: 100%;
     font-family: 'Archivo Narrow', sans-serif;
     color: #fff;
+
+    a {
+    	text-decoration: none;
+    	color: #fff;
+    }
+
+    a:hover, a:focus, a:active {
+		color: $red;
+    }
 }
 
 //MEDIA QUERIES
