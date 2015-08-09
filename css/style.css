@@ -188,14 +188,15 @@ h3 {
 
 .logo_initial {
   position: absolute;
-  margin-top: 10vh;
+  margin: 10vh auto 0 auto;
   height: 70vh;
   width: 70vh;
   background: white;
   border: solid 50px #4A4E4F;
   border-radius: 50%;
   z-index: 50;
-  margin-left: 29.85432%;
+  left: 0;
+  right: 0;
   overflow: hidden;
   box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2); }
 
@@ -285,6 +286,7 @@ select {
   border: none;
   border-radius: 5px;
   color: white;
+  width: 100%;
   font-family: 'Archivo Narrow', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.25em;
@@ -292,8 +294,8 @@ select {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 57.35098%;
-  margin-left: 21.32451%;
+  width: 48.82117%;
+  margin-left: 25.58941%;
   height: 7vh; }
   select:last-child {
     margin-right: 0; }
