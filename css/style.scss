@@ -54,7 +54,13 @@ h3{
 	padding:0;
 	color: $black;
 }
-//INITILA LOGO STYLES
+//HIDE CLASS
+//******************************
+.hide {
+	display: none;
+}
+
+//INITIAL LOGO STYLES
 //******************************
 #overlay{
     display: none;
