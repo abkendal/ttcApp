@@ -79,6 +79,7 @@ app.getStops = function(lat, lon){
 		type: 'GET',
 		dataType: 'jsonp',
 		success: function(response){
+			console.log(response);
 			for (var i =0; i<3; i++){
 				closestStopsName[i] = response.locations[i].name;
 				closestStopsURI[i] = response.locations[i].uri;
@@ -215,7 +216,10 @@ app.compareTime = function(busTime, currentTime) {
 	minutesTillBus = (busTime - currentTime) / 60;
 	minutesTillBus = minutesTillBus.toFixed(2); 
 	console.log(minutesTillBus);
-	if (minutesTillBus < 5) {
+	if (minutesTillBus < -50) {
+		var suggestionText = "Your bus 'aint comin' for a looooooong time!"
+	}
+	else if (minutesTillBus < 5) {
 		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You should probably get to your stop."
 	} else if (minutesTillBus < 15) {
 		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time for something quick like a coffee shop or convenience store."
