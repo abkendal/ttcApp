@@ -108,9 +108,8 @@ svg{
 h2{
 	@include span-columns(8);
 	@include shift(1);
-	text-transform: lowercase;
-	
 }
+
 .skin-nav{
 	border: none;
 	background: none;
