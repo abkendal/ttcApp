@@ -103,6 +103,9 @@ app.getUserStop = function() {
   		app.getRoute();
   		// HIDE closestStops DROP-DOWN HERE
   		// $(this).fadeOut('slow').addClass('hide');
+
+  		//SHOW LOADING BAR HERE
+  		$('.loadingWrapper').fadeIn('slow').removeClass('hide');
 	});
 };
 
@@ -162,6 +165,7 @@ app.filterRouteName = function(stops){
 app.displayRoute = function(routes, key) {
 	var $routeName = $("<option>").val(key).text(routes);
 	$("#routesAtStop").append($routeName);
+	$('.loadingWrapper').fadeOut(); //HIDE LOADING BAR AFTER ROUTES ARE APPENDED INTO DROPDOWN
 	$('#routesAtStop').fadeIn('slow').removeClass('hide');
 };
 //STORE SELECTED ROUTE IN VARIABLE
