@@ -3,6 +3,10 @@
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+	.nav_container {
+		padding: 0 1%;
+	}
+
 	select {
 		@include span-columns(8);
 		@include shift(2);
@@ -26,7 +30,7 @@
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
 	.nav_container {
-		padding: 0 1%;
+		padding: 0 2%;
 	}
 
 	.buttonsContainer {
@@ -52,8 +56,6 @@
 	}
 
 	.nav_container {
-		padding: 0 2%;
-
 		.skin-nav {
 			font-size: 22px;
 		}
