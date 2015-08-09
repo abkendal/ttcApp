@@ -21,6 +21,7 @@ var routeName = [];
  var time;
  var busSeconds;
  var currentSeconds;
+ var minutesTillBus;
 
 //REFRESH FUNCTION
 app.refresh = function() {
@@ -30,7 +31,7 @@ app.refresh = function() {
 }
 
 //LOGO FADE IN AND OUT
-$('#overlay').fadeIn('fast').delay(700).fadeOut('slow');
+$('#overlay').fadeIn('fast').delay(2000).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
@@ -166,13 +167,14 @@ app.displayRoute = function(routes, key) {
 //STORE SELECTED ROUTE IN VARIABLE
 app.getUserRoute = function(userRoute) {
 	$('#routesAtStop').on('change', function() {
-		var selectedRoute = $('#routesAtStop :selected').val();
+		// Get the current time when the selection is made
+		app.getTime();
 
+		var selectedRoute = $('#routesAtStop :selected').val();
   		nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[1].departure_time;
 		
   		// Store the am/pm marker 
   		var ampm = nextBusTime.slice(-1);
-  		console.log(ampm);
 
 		// Remove am/pm marker from the end of time string
 		nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
@@ -187,7 +189,7 @@ app.getUserRoute = function(userRoute) {
 		if (ampm==='p') {
 			busSeconds = busSeconds + 43200;
 		};
-		console.log(busSeconds);
+		app.compareTime(busSeconds, currentSeconds);
 
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
 		$('.mapCover').fadeOut('slow');
@@ -206,8 +208,17 @@ app.getTime = function() {
 	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
 
 	console.log(time);
-	console.log(currentSeconds);
 };
+
+// CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
+app.compareTime = function(busTime, currentTime) {
+	minutesTillBus = (busTime - currentTime) / 60;
+	console.log(minutesTillBus);
+	var suggestionText = "You have " + minutesTillBus + " minutes until your next bus."
+	$('#suggestionText').text(suggestionText);
+}
+
+
 
 app.getPlaces = function() {
 	var request = {
@@ -244,12 +255,14 @@ app.getPlaces = function() {
 	  };
 };
 
+
 app.init = function (){
 	app.getGeo();
 	app.refresh();
 	app.getUserRoute();
 	
 };
+
 
 $(function(){
 	app.init();
