@@ -52,7 +52,7 @@ app.updatePosition = function(position) {
 	$geolocation[0] = position.coords.latitude;
 	$geolocation[1] = position.coords.longitude;
 	app.getStops($geolocation[0], $geolocation[1]);
-	console.log($geolocation);
+	// console.log($geolocation);
 	app.initialize();
 };
 
@@ -87,9 +87,11 @@ app.getStops = function(lat, lon){
 //GET USER'S STOP CHOICE AND STORE THE DATA IN AN ARRAY
 app.getUserStop = function() {
 	$('#closestStops').on('change', function() {
+		$("#routesAtStop").empty();
   		var selectedStop = $(this).val();
+  		userStopInfo=[];
   		userStopInfo.push(closestStopsName[selectedStop], closestStopsURI[selectedStop], closestStopsLat[selectedStop], closestStopsLng[selectedStop]);
-  		console.log(userStopInfo);
+  		// console.log(userStopInfo);
   		app.displayStopMarker();
   		app.getPlaces();
   		app.getRoute();
@@ -106,7 +108,7 @@ app.displayStops = function(){
 		var $option = $("<option>").val(index).text(item);
 		$("#closestStops").append($option);
 	});
-	console.log(closestStopsName);
+	// console.log(closestStopsName);
 	app.getUserStop();
 	
 };
@@ -133,7 +135,7 @@ app.getRoute = function(){
 		success: function(returns){
 			routeResponse = returns;
 			app.filterRouteName(returns);
-			console.log(returns);
+			// console.log(returns);
 		}	
 	})
 };
@@ -144,7 +146,7 @@ app.filterRouteName = function(stops){
 	for(i = 0; i < stops.stops[0].routes.length; i++){
 		app.displayRoute(stops.stops[0].routes[i].uri);
 		// console.log(stops);
-		console.log(stops.stops[0].routes[i].uri);
+		// console.log(stops.stops[0].routes[i].uri);
 	}
 };
 //DISPLAYING ROUTES IN DROP DOWN 
