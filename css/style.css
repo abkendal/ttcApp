@@ -165,14 +165,16 @@ h1 {
 
 h2 {
   font-size: 20px;
-  letter-spacing: 0.15em; }
+  letter-spacing: 0.15em;
+  text-transform: capitalize; }
 
 h3 {
   font-size: 18px;
   letter-spacing: 0.15em;
   margin: 0;
   padding: 0;
-  color: #4A4E4F; }
+  color: #4A4E4F;
+  text-transform: capitalize; }
 
 #overlay {
   display: none;
