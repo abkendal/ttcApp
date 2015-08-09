@@ -31,7 +31,7 @@ app.refresh = function() {
 }
 
 //LOGO FADE IN AND OUT
-$('#overlay').fadeIn('fast').delay(700).fadeOut('slow');
+$('#overlay').fadeIn('fast').delay(2000).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
@@ -210,10 +210,12 @@ app.getTime = function() {
 	console.log(time);
 };
 
-// CALCULATE TIME UNTIL NEXT BUS
+// CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
 app.compareTime = function(busTime, currentTime) {
 	minutesTillBus = (busTime - currentTime) / 60;
 	console.log(minutesTillBus);
+	var suggestionText = "You have " + minutesTillBus + " minutes until your next bus."
+	('#suggestionText').text(suggestionText);
 }
 
 
