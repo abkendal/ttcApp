@@ -180,7 +180,26 @@ h2{
  	@include outer-container;
  }
 
+//LOADING BAR STYLES
+//*****************************
+.loadingWrapper {
+	@include outer-container;
 
+	.loadingBar {
+		@include span-columns(8);
+		@include shift(2);
+
+		.loadingDot { //half-attempted CSS, can delete later
+			@include span-columns(2.67);
+			height: 5vh;
+			width: 5vh;
+			background: #fff;
+			border-radius: 50%;
+			border: 8px solid $red;
+			display: inline-block;
+		}
+	}
+}
 //DROP DOWN STYLES
 //*****************************
 select{
