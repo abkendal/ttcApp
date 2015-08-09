@@ -47,6 +47,7 @@ h1{
 h2{
 	font-size: 20px;
 	letter-spacing: 0.15em;
+	text-transform: capitalize;
 }
 h3{
 	font-size: 18px;
@@ -54,6 +55,7 @@ h3{
 	margin:0;
 	padding:0;
 	color: $black;
+	text-transform: capitalize;
 }
 
 //INITIAL LOGO STYLES
@@ -309,6 +311,10 @@ footer {
     width: 100%;
     font-family: 'Archivo Narrow', sans-serif;
     color: #fff;
+    p {
+    	margin: 0;
+    	padding: 8px;
+    }
 
     a {
     	text-decoration: none;

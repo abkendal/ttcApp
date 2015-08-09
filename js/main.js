@@ -16,7 +16,12 @@ var routeName = [];
  // userStopInfo[2] = latitude of stop
  // userStopInfo[3] = longitude of stop
  var userRouteInfo = [];
+ var nextBusTime;
  var routeResponse;
+ var time;
+ var busSeconds;
+ var currentSeconds;
+ var minutesTillBus;
 
 //REFRESH FUNCTION
 app.refresh = function() {
@@ -26,7 +31,7 @@ app.refresh = function() {
 }
 
 //LOGO FADE IN AND OUT
-$('#overlay').fadeIn('fast').delay(700).fadeOut('slow');
+$('#overlay').fadeIn('fast').delay(2000).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
@@ -166,16 +171,66 @@ app.displayRoute = function(routes, key) {
 //STORE SELECTED ROUTE IN VARIABLE
 app.getUserRoute = function(userRoute) {
 	$('#routesAtStop').on('change', function() {
+		// Get the current time when the selection is made
+		app.getTime();
+
 		var selectedRoute = $('#routesAtStop :selected').val();
-  		console.log(selectedRoute);
-  		userRouteInfo = routeResponse.stops[0].routes[selectedRoute].stop_times[0].departure_time;
-		console.log(userRouteInfo);
+  		nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[1].departure_time;
+		
+  		// Store the am/pm marker 
+  		var ampm = nextBusTime.slice(-1);
+
+		// Remove am/pm marker from the end of time string
+		nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
+		// Add seconds in order to standardize time string format
+		nextBusTime = nextBusTime+":00";
+
+		console.log(nextBusTime);
+
+		// Convert time into seconds and add 12 hours if time is in pm
+		var a = nextBusTime.split(':');
+		busSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+		if (ampm==='p') {
+			busSeconds = busSeconds + 43200;
+		};
+		app.compareTime(busSeconds, currentSeconds);
+
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
 		$('.mapCover').fadeOut('slow');
 		$('.suggestionContainer').fadeIn('slow').removeClass('hide');
 		$('.buttonsContainer').fadeIn('slow').removeClass('hide');
 	});
 };
+
+// GET CURRENT TIME
+app.getTime = function() {
+	// var time = $.now();
+	// console.log(time);
+	var dt = new Date();
+	time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	var a = time.split(':');
+	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+
+	console.log(time);
+};
+
+// CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
+app.compareTime = function(busTime, currentTime) {
+	minutesTillBus = (busTime - currentTime) / 60;
+	minutesTillBus = minutesTillBus.toFixed(2); 
+	console.log(minutesTillBus);
+	if (minutesTillBus < 5) {
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You should probably get to your stop."
+	} else if (minutesTillBus < 15) {
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to grab a coffee!"
+	} else {
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to explore!"
+	}
+
+	$('#suggestionText').text(suggestionText);
+}
+
+
 
 app.getPlaces = function() {
 	var request = {
@@ -212,12 +267,14 @@ app.getPlaces = function() {
 	  };
 };
 
+
 app.init = function (){
 	app.getGeo();
 	app.refresh();
 	app.getUserRoute();
 	
 };
+
 
 $(function(){
 	app.init();
