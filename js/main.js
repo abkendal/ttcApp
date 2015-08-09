@@ -6,6 +6,7 @@ var closestStopsName = [];
 var closestStopsURI = [];
 var closestStopsLat = [];
 var closestStopsLng = [];
+var routeName = [];
 var map;
 var userStopInfo = [];
 var routeName = [];
@@ -15,6 +16,7 @@ var routeName = [];
  // userStopInfo[2] = latitude of stop
  // userStopInfo[3] = longitude of stop
  var userRouteInfo = [];
+ var routeResponse;
 
 //REFRESH FUNCTION
 app.refresh = function() {
@@ -51,7 +53,7 @@ app.updatePosition = function(position) {
 	$geolocation[0] = position.coords.latitude;
 	$geolocation[1] = position.coords.longitude;
 	app.getStops($geolocation[0], $geolocation[1]);
-	console.log($geolocation);
+	// console.log($geolocation);
 	app.initialize();
 };
 
@@ -86,9 +88,11 @@ app.getStops = function(lat, lon){
 //GET USER'S STOP CHOICE AND STORE THE DATA IN AN ARRAY
 app.getUserStop = function() {
 	$('#closestStops').on('change', function() {
+		$("#routesAtStop").empty();
   		var selectedStop = $(this).val();
+  		userStopInfo=[];
   		userStopInfo.push(closestStopsName[selectedStop], closestStopsURI[selectedStop], closestStopsLat[selectedStop], closestStopsLng[selectedStop]);
-  		console.log(userStopInfo);
+  		// console.log(userStopInfo);
   		app.displayStopMarker();
   		app.getPlaces();
   		app.getRoute();
@@ -130,8 +134,12 @@ app.getRoute = function(){
 			routes: [],
 		},
 		success: function(returns){
+			for(var i = 0;i<returns.stops[0].routes.length; i++) {
+				routeName[i] = returns.stops[0].routes[i].name;
+			}
+			routeResponse = returns;
 			app.filterRouteName(returns);
-			console.log("working");
+			console.log(returns);
 		}	
 	})
 };
@@ -140,48 +148,30 @@ app.filterRouteName = function(stops){
 	var $firstRouteOption = $("<option>").val($(this)).text("2. Select Your Route");
 	$("#routesAtStop").append($firstRouteOption);
 	for(i = 0; i < stops.stops[0].routes.length; i++){
-		app.displayRoute(stops.stops[0].routes[i].uri);
-		console.log(stops);
+		app.displayRoute(stops.stops[0].routes[i].uri, i);
+		// console.log(stops);
+		// console.log(stops.stops[0].routes[i].uri);
 	}
 };
 //DISPLAYING ROUTES IN DROP DOWN 
-app.displayRoute = function(routes) {
-	var $routeName = $("<option>").val($(this)).text(routes);
+app.displayRoute = function(routes, key) {
+	var $routeName = $("<option>").val(key).text(routes);
 	$("#routesAtStop").append($routeName);
 	$('#routesAtStop').fadeIn('slow').removeClass('hide');
-	app.getUserRoute();
 };
 //STORE SELECTED ROUTE IN VARIABLE
 app.getUserRoute = function(userRoute) {
 	$('#routesAtStop').on('change', function() {
-  		var selectedRoute = $(this).val();
-  // 		userRouteInfo.push(selectedRoute.stops.routes.stop_times[0].departure_time);
-		// console.log(userRoute);
+		var selectedRoute = $('#routesAtStop :selected').val();
+  		console.log(selectedRoute);
+  		userRouteInfo = routeResponse.stops[0].routes[selectedRoute].stop_times[0].departure_time;
+		console.log(userRouteInfo);
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
 		$('.mapCover').fadeOut('slow');
 		$('.suggestionContainer').fadeIn('slow').removeClass('hide');
 		$('.buttonsContainer').fadeIn('slow').removeClass('hide');
 	});
 };
-
-//Commented out by Christina
-// app.getPlaces = function(lat, lon){
-// 	$.ajax({
-// 		url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-// 		type: 'GET',
-// 		dataType: 'json',
-// 		data: {
-// 			key: 'AIzaSyArRVZ-NVkbo5_Ux1AKg7ChSny27D7EtYo',
-// 			location:lat+","+lon,
-// 			rankby: 'distance',
-// 			type: 'cafe',
-// 			opennow: ''
-// 		},
-// 		success: function(response) {
-// 			console.log(response);
-// 		}
-// 	});
-// };
 
 app.getPlaces = function() {
 	var request = {
@@ -221,6 +211,7 @@ app.getPlaces = function() {
 app.init = function (){
 	app.getGeo();
 	app.refresh();
+	app.getUserRoute();
 	
 };
 
