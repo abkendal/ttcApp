@@ -47,6 +47,7 @@ h1{
 h2{
 	font-size: 20px;
 	letter-spacing: 0.15em;
+	text-transform: capitalize;
 }
 h3{
 	font-size: 18px;
@@ -54,6 +55,7 @@ h3{
 	margin:0;
 	padding:0;
 	color: $black;
+	text-transform: capitalize;
 }
 
 //INITIAL LOGO STYLES
@@ -108,7 +110,6 @@ svg{
 h2{
 	@include span-columns(8);
 	@include shift(1);
-	text-transform: lowercase;
 	
 }
 .skin-nav{

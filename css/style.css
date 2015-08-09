@@ -165,14 +165,16 @@ h1 {
 
 h2 {
   font-size: 20px;
-  letter-spacing: 0.15em; }
+  letter-spacing: 0.15em;
+  text-transform: capitalize; }
 
 h3 {
   font-size: 18px;
   letter-spacing: 0.15em;
   margin: 0;
   padding: 0;
-  color: #4A4E4F; }
+  color: #4A4E4F;
+  text-transform: capitalize; }
 
 #overlay {
   display: none;
@@ -228,8 +230,7 @@ h2 {
   display: block;
   margin-right: 2.35765%;
   width: 65.88078%;
-  margin-left: 8.5298%;
-  text-transform: lowercase; }
+  margin-left: 8.5298%; }
   h2:last-child {
     margin-right: 0; }
 
