@@ -404,6 +404,8 @@ footer {
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+  .nav_container {
+    padding: 0 1%; }
   select {
     float: left;
     display: block;
@@ -424,7 +426,7 @@ footer {
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
   .nav_container {
-    padding: 0 1%; }
+    padding: 0 2%; }
   .buttonsContainer {
     margin-bottom: 2%; } }
 
@@ -437,10 +439,8 @@ footer {
       font-size: 56px; }
     .logo_initial .logo_text h3 {
       font-size: 16px; }
-  .nav_container {
-    padding: 0 2%; }
-    .nav_container .skin-nav {
-      font-size: 22px; }
+  .nav_container .skin-nav {
+    font-size: 22px; }
   select, .mapContainer {
     float: left;
     display: block;
