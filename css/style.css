@@ -151,7 +151,7 @@ html, body {
   text-align: center; }
 
 body {
-  margin: 0; }
+  margin: 0 0 5vh; }
 
 h1, h2, h3 {
   font-family: 'Archivo Narrow', sans-serif; }
@@ -173,9 +173,6 @@ h3 {
   margin: 0;
   padding: 0;
   color: #4A4E4F; }
-
-.hide {
-  display: none; }
 
 #overlay {
   display: none;
@@ -288,7 +285,6 @@ select {
   border: none;
   border-radius: 5px;
   color: white;
-  width: 100%;
   font-family: 'Archivo Narrow', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.25em;
@@ -307,13 +303,22 @@ select {
   display: block;
   margin-right: 2.35765%;
   width: 65.88078%;
-  margin-left: 17.05961%; }
+  margin-left: 17.05961%;
+  position: relative; }
   .mapContainer:last-child {
     margin-right: 0; }
 
 #mapCanvas {
   height: 50vh;
   width: 100%; }
+
+.mapCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  height: 100%;
+  width: 101%; }
 
 .button-places {
   border: none;
@@ -353,16 +358,20 @@ select {
   display: block;
   margin-right: 2.35765%;
   width: 100%;
-  margin-left: 12.79471%; }
+  margin-left: 17.05961%;
+  margin-bottom: 1%; }
   .buttonsContainer:last-child {
     margin-right: 0; }
   .buttonsContainer .buttonBox {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 23.23176%; }
+    width: 14.70196%; }
     .buttonsContainer .buttonBox:last-child {
       margin-right: 0; }
+
+.hide {
+  display: none; }
 
 footer {
   background: #4A4E4F;
