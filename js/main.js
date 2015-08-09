@@ -99,7 +99,7 @@ app.getUserStop = function() {
   		userStopInfo.push(closestStopsName[selectedStop], closestStopsURI[selectedStop], closestStopsLat[selectedStop], closestStopsLng[selectedStop]);
   		// console.log(userStopInfo);
   		app.displayStopMarker();
-  		app.getPlaces();
+  		// app.getPlaces();
   		app.getRoute();
   		// HIDE closestStops DROP-DOWN HERE
   		// $(this).fadeOut('slow').addClass('hide');
@@ -218,22 +218,46 @@ app.compareTime = function(busTime, currentTime) {
 	if (minutesTillBus < 5) {
 		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You should probably get to your stop."
 	} else if (minutesTillBus < 15) {
-		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to grab a coffee!"
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time for something quick like a coffee shop or convenience store."
 	} else {
 		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to explore!"
 	}
-
 	$('#suggestionText').text(suggestionText);
+
+	// Only look for places if there is more than 5 minutes until the next bus
+	if (minutesTillBus >= 5) {
+		app.getPlaces(minutesTillBus);
+	};
 }
 
 
 
-app.getPlaces = function() {
+app.getPlaces = function(time) {
 	var request = {
 	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
 	    // rankBy: google.maps.places.RankBy.DISTANCE,
-	    radius: 100, 
-	    types: ['cafe', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant']
+	    radius: '', 
+	    types: []
+	  };
+
+	  if (time <7.5) {
+	  	request.radius = 50;
+	  	request.types = ['cafe', 'store'];
+	  } 
+
+	  else if (time <10) {
+	  	request.radius = 100;
+	  	request.types = ['cafe', 'store'];
+	  } 
+
+	  else if (time <15) {
+	  	request.radius = 150;
+	  	request.types = ['cafe', 'store'];
+	  } 
+
+	  else {
+	  	request.radius = 150;
+	  	request.types = ['cafe', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant'];
 	  };
 
 	  infowindow = new google.maps.InfoWindow();
