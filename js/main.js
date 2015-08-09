@@ -16,7 +16,11 @@ var routeName = [];
  // userStopInfo[2] = latitude of stop
  // userStopInfo[3] = longitude of stop
  var userRouteInfo = [];
+ var nextBusTime;
  var routeResponse;
+ var time;
+ var busSeconds;
+ var currentSeconds;
 
 //REFRESH FUNCTION
 app.refresh = function() {
@@ -163,14 +167,46 @@ app.displayRoute = function(routes, key) {
 app.getUserRoute = function(userRoute) {
 	$('#routesAtStop').on('change', function() {
 		var selectedRoute = $('#routesAtStop :selected').val();
-  		console.log(selectedRoute);
-  		userRouteInfo = routeResponse.stops[0].routes[selectedRoute].stop_times[0].departure_time;
-		console.log(userRouteInfo);
+
+  		nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[1].departure_time;
+		
+  		// Store the am/pm marker 
+  		var ampm = nextBusTime.slice(-1);
+  		console.log(ampm);
+
+		// Remove am/pm marker from the end of time string
+		nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
+		// Add seconds in order to standardize time string format
+		nextBusTime = nextBusTime+":00";
+
+		console.log(nextBusTime);
+
+		// Convert time into seconds and add 12 hours if time is in pm
+		var a = nextBusTime.split(':');
+		busSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+		if (ampm==='p') {
+			busSeconds = busSeconds + 43200;
+		};
+		console.log(busSeconds);
+
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
 		$('.mapCover').fadeOut('slow');
 		$('.suggestionContainer').fadeIn('slow').removeClass('hide');
 		$('.buttonsContainer').fadeIn('slow').removeClass('hide');
 	});
+};
+
+// GET CURRENT TIME
+app.getTime = function() {
+	// var time = $.now();
+	// console.log(time);
+	var dt = new Date();
+	time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	var a = time.split(':');
+	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+
+	console.log(time);
+	console.log(currentSeconds);
 };
 
 app.getPlaces = function() {
