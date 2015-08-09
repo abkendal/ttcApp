@@ -84,6 +84,8 @@ app.getUserStop = function() {
   		app.displayStopMarker();
   		app.getPlaces();
   		app.getRoute();
+  		// HIDE closestStops DROP-DOWN HERE
+  		$(this).fadeOut('slow').addClass('hide');
 	});
 };
 
@@ -135,19 +137,22 @@ app.filterRouteName = function(stops){
 	}
 };
 //DISPLAYING ROUTES IN DROP DOWN 
-app.displayRoute = function(routes){
+app.displayRoute = function(routes) {
 	var $routeName = $("<option>").val($(this)).text(routes);
 	$("#routesAtStop").append($routeName);
+	$('#routesAtStop').fadeIn('slow').removeClass('hide');
 	app.getUserRoute();
 };
 //STORE SELECTED ROUTE IN VARIABLE
-// app.getUserRoute = function(userRoute) {
-// 	$('#routesAtStop').on('change', function() {
-//   		var selectedRoute = $(this).val();
-//   		userRouteInfo.push(selectedRoute.stops.routes.stop_times[0].departure_time);
-// 		console.log(userRoute);
-// 	});
-// };
+app.getUserRoute = function(userRoute) {
+	$('#routesAtStop').on('change', function() {
+  		var selectedRoute = $(this).val();
+  // 		userRouteInfo.push(selectedRoute.stops.routes.stop_times[0].departure_time);
+		// console.log(userRoute);
+		$('#routesAtStop').fadeOut('slow').addClass('hide');
+		$('.resultsSection').fadeIn('slow').removeClass('hide');
+	});
+};
 
 //Commented out by Christina
 // app.getPlaces = function(lat, lon){
@@ -203,10 +208,19 @@ app.getPlaces = function() {
 	  };
 };
 
+//LOADING FUNCTIONS
+app.loadingTest = function() {
+	$('.suggestionContainer').on('click', function() {
+		$(this).fadeOut('slow').addClass('hide');
+		$('#routesAtStop').fadeIn('slow').removeClass('hide');
+	});
+}
+
 	
 
 app.init = function (){
 	app.getGeo();
+	app.loadingTest();
 	
 };
 

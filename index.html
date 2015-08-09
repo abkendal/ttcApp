@@ -71,15 +71,16 @@
 <!-- User Select Route-->
 	<section class="inputSection"> 
 		<div class="userInput"> 
-			<select id="routesAtStop" class="styles">
+			<select id="routesAtStop" class="styles hide">
 				<!-- INJECT  ROUTES BASED ON USER'S SELECTED STOP -->
 			</select>
 		</div>
 	</section>	
 <!--Results Page-->
-	<section class="resultsSection">
+	<section class="resultsSection hide">
 		<div class="outerWrapper">
 		<!-- <div class="stopDistance">Closest Stop: 5 minute walk</div> is this still needed? - jeanne -->
+		<!-- Christina: I don't think we need it anymore since we're assuming the user is at their stop!! I'll leave it here until the very end, just in case. Feel free to delete otherwise! -->
 		<div class="mapContainer">
 			<div id="mapCanvas"></div>
 			<!-- GOOGLE MAPS EMBED HERE -->
