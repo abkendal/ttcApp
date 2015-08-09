@@ -68,14 +68,15 @@ h3{
 }
 .logo_initial{
 	position:absolute;
-	margin-top:10vh;
+	margin: 10vh auto 0 auto; //This centers the logo :D
 	height: 70vh;
 	width: 70vh;
 	background: white;
 	border: solid 50px $black;
 	border-radius: 50%;
 	z-index: 50;
-	@include shift(3.5);
+    left: 0;
+    right: 0;
 	overflow:hidden;
 	box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
 }
@@ -189,13 +190,13 @@ select{
 	border: none;
 	border-radius: 5px;
 	color: white;
-	// width: 100%;
+	width: 100%;
 	font-family: 'Archivo Narrow', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.25em;
 	margin-bottom: 1%;
-	@include span-columns(7);
-	@include shift(2.5);
+	@include span-columns(6); //changed some of these values to make it match the width of the map container
+	@include shift(3);
 	height:7vh;
 }
 // MAP STYLES
@@ -307,3 +308,7 @@ footer {
     font-family: 'Archivo Narrow', sans-serif;
     color: #fff;
 }
+
+//MEDIA QUERIES
+//******************************
+@import 'mediaQueries';
