@@ -213,8 +213,16 @@ app.getTime = function() {
 // CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
 app.compareTime = function(busTime, currentTime) {
 	minutesTillBus = (busTime - currentTime) / 60;
+	minutesTillBus = minutesTillBus.toFixed(2); 
 	console.log(minutesTillBus);
-	var suggestionText = "You have " + minutesTillBus + " minutes until your next bus."
+	if (minutesTillBus < 5) {
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You should probably get to your stop."
+	} else if (minutesTillBus < 15) {
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to grab a coffee!"
+	} else {
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to explore!"
+	}
+
 	$('#suggestionText').text(suggestionText);
 }
 
