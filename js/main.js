@@ -158,15 +158,14 @@ app.displayRoute = function(routes, key) {
 	var $routeName = $("<option>").val(key).text(routes);
 	$("#routesAtStop").append($routeName);
 	$('#routesAtStop').fadeIn('slow').removeClass('hide');
-	app.getUserRoute();
 };
 //STORE SELECTED ROUTE IN VARIABLE
 app.getUserRoute = function(userRoute) {
 	$('#routesAtStop').on('change', function() {
-		var selectedRoute = $('#routesAtStop :selected').text();
+		var selectedRoute = $('#routesAtStop :selected').val();
   		console.log(selectedRoute);
-  		// userRouteInfo.push(routeResponse.stops.routes.stop_times[0].departure_time);
-		// console.log(userRoute);
+  		userRouteInfo = routeResponse.stops[0].routes[selectedRoute].stop_times[0].departure_time;
+		console.log(userRouteInfo);
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
 		$('.mapCover').fadeOut('slow');
 		$('.suggestionContainer').fadeIn('slow').removeClass('hide');
@@ -212,6 +211,7 @@ app.getPlaces = function() {
 app.init = function (){
 	app.getGeo();
 	app.refresh();
+	app.getUserRoute();
 	
 };
 
