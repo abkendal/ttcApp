@@ -343,13 +343,13 @@ select {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 100%; }
+  width: 100%;
+  margin: 1% 0; }
   .suggestionContainer:last-child {
     margin-right: 0; }
   .suggestionContainer .suggestionBox {
     background: #D96466;
     color: #fff;
-    margin: 1% 0;
     border-radius: 5px;
     padding: 2%;
     float: left;

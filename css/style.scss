@@ -247,11 +247,11 @@ select{
 // ****************************
 .suggestionContainer {
 	@include span-columns(12);
+	margin: 1% 0;
 
 	.suggestionBox {
 		background: $red;
 		color: #fff;
-		margin: 1% 0;
 		border-radius: 5px;
 		padding:2%;
 		@include span-columns(8);
