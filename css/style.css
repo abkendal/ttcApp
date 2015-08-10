@@ -440,11 +440,6 @@ footer {
     color: #D96466; }
 
 /* Portrait tablet and small desktops */
-@media (min-width: 1000px) {
-  .logo_initial .logo_text {
-    bottom: 4vh;
-    left: 2vh; } }
-
 @media (max-width: 960px) {
   .nav_container {
     padding: 0 1%; }
