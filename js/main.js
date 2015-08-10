@@ -273,7 +273,7 @@ app.compareTime = function(busTime, currentTime) {
 }
 
 
-// Query google places based on location and time until next bus
+// Query google places based on location and time until next bus.
 app.getPlaces = function(time) {
 	var request = {
 	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
