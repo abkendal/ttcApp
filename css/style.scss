@@ -30,6 +30,7 @@ html, body {
 
 body {
 	margin: 0 0 5vh;
+	// position: relative; don't do this or code breaks completely
 	//The 5vh is needed to make a sticky footer! Please leave on. :)
 	// height: 77vh;
 }
@@ -135,44 +136,32 @@ h2{
 }
 //SLIDING NAV
 //************************************
-// .checkbox{
-// 	display: none;
+//can't for the life of me get this to work?! 
+// input[type=checkbox]{
+// 	// display: none;
+// }
+// .dd-nav{
+// 	height:100vh;
+// 	background: black;
+// 	width: 300px;
+// 	color: white;
+// 	position: absolute;
+// 	top:0;
+// 	left:-300px;
+// 	margin: 0;
+// 	transition: all 0.5s ease;
+// }
+// #nav-check:checked + .dd-nav{
+// left:0;
 // }
 .nav_container{
 	position: relative;
 	height:100%;
-}
-// .dd-nav{
-// 	height: 90vh;
-// 	background: red;
-// 	width: 100%;
-// 	position: absolute;
-// 	top:7vh;
-// 	left:0;
+// 	left: 0;
 // 	transition: all 0.5s ease;
-// 	z-index: 10;
-// 	color: $white;
-// }		
-// #nav-check:checked + .nav_container{
-// 		left: 0;
-// }
+}
 // #nav-check:checked ~ .nav_container{
-// 		left: 300px;
-// }
-
-// ul.dd-nav {
-// 	margin: 0;
-// 	padding: 5% 3%;
-	
-// }
-// .dd-nav_container{
-// 	border: 2px solid $white;
-// 	border-radius: 5px;
-// 	padding: 2%;
-// }
-// .dd-nav li{ 
-// 	display: block;
-// 	padding: 5% 0;
+// 	left:300px;
 // }
 //*****************************
 .inputSection{
@@ -196,27 +185,23 @@ h2{
 				height: 100%;
 				background:$blue;
 			}
-		.loadingDot { //half-attempted CSS, can delete later
-			@include span-columns(2.67);
-			height: 5vh;
-			width: 5vh;
-			background: #fff;
-			border-radius: 50%;
-			border: 8px solid $red;
-			display: inline-block;
-		}
+		// .loadingDot { //half-attempted CSS, can delete later
+		// 	@include span-columns(2.67);
+		// 	height: 5vh;
+		// 	width: 5vh;
+		// 	background: #fff;
+		// 	border-radius: 50%;
+		// 	border: 8px solid $red;
+		// 	display: inline-block;
+		// }
 	}
 }
-// .loadingLight{
-// 	height:100%;
-// 	width: 100%;
-// 	background: $blue;
-// }
+
 //DROP DOWN STYLES
 //*****************************
 select{
 	background: $red;
-	border: none;
+	border: 2px solid $red;
 	border-radius: 5px;
 	color: white;
 	width: 100%;
@@ -228,6 +213,11 @@ select{
 	@include shift(3);
 	height:7vh;
 }
+select:focus{
+	outline: none;
+	border: 2px solid $black;
+}
+
 // MAP STYLES
 // ****************************
 .mapContainer {
@@ -248,8 +238,8 @@ select{
 	top: 0;
 	left: 0;
     background: #fff;
-    height: 100%;
-    width: 100%; 
+   	width: 102%;
+   	height: 102%;
 }
 
 // PLACES BUTTON STYLES

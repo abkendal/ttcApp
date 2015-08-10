@@ -111,7 +111,10 @@
 			padding: 3%;
 		}
 	}
-
+	.loadingBar img{
+		height: 7vh;
+		width: 100%;
+	}
 	.buttonBox {
 		@include span-columns(1.5 of 9);
 	}
