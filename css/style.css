@@ -391,6 +391,8 @@ select {
     margin-left: 17.05961%; }
     .suggestionContainer .suggestionBox:last-child {
       margin-right: 0; }
+    .suggestionContainer .suggestionBox p {
+      text-align: left; }
 
 .buttonsContainer {
   float: left;
