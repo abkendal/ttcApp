@@ -440,9 +440,22 @@ footer {
     color: #D96466; }
 
 /* Portrait tablet and small desktops */
-@media (max-width: 940px) {
+@media (min-width: 1000px) {
+  .logo_initial .logo_text {
+    bottom: 4vh;
+    left: 2vh; } }
+
+@media (max-width: 960px) {
   .nav_container {
     padding: 0 1%; }
+  .logo_initial {
+    border: solid 45px #4A4E4F; }
+    .logo_initial .logo_text {
+      bottom: 3.5vh; }
+      .logo_initial .logo_text h1 {
+        font-size: 56px; }
+      .logo_initial .logo_text h3 {
+        font-size: 16px; }
   select {
     float: left;
     display: block;
@@ -464,6 +477,8 @@ footer {
 @media (max-width: 768px) {
   .nav_container {
     padding: 0 2%; }
+  .logo_initial .logo_text {
+    bottom: 3vh; }
   .buttonsContainer {
     margin-bottom: 2%; } }
 
@@ -471,9 +486,10 @@ footer {
 @media (max-width: 480px) {
   .logo_initial {
     height: 60vh;
-    width: 60vh; }
+    width: 60vh;
+    border: solid 40px #4A4E4F; }
     .logo_initial .logo_text h1 {
-      font-size: 56px; }
+      font-size: 40px; }
     .logo_initial .logo_text h3 {
       font-size: 16px; }
   .nav_container .skin-nav {
@@ -511,10 +527,11 @@ footer {
     height: 9vh;
     width: 9vh; } }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .logo_initial {
-    height: 47vh;
-    width: 47vh; }
+    height: 50vh;
+    width: 50vh;
+    border: 35px solid #4A4E4F; }
     .logo_initial svg {
       width: 95%; }
     .logo_initial .logo_text h1 {
@@ -533,3 +550,13 @@ footer {
     height: 7.5vh;
     width: 7.5vh;
     font-size: 22px; } }
+
+@media (max-width: 325px) {
+  .nav_container .skin-nav {
+    font-size: 16px; }
+  .nav_container h2 {
+    font-size: 14px; }
+  .logo_initial {
+    border: 25px solid #4A4E4F; }
+    .logo_initial .logo_text h3 {
+      font-size: 10px; } }
