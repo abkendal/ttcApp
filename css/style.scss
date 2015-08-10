@@ -269,6 +269,7 @@ select{
 .suggestionContainer {
 	@include span-columns(12);
 	margin: 1% 0;
+	text-align: left;
 
 	.suggestionBox {
 		background: $red;

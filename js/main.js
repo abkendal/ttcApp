@@ -95,6 +95,7 @@ app.getStops = function(lat, lon){
 //GET USER'S STOP CHOICE AND STORE THE DATA IN AN ARRAY
 app.getUserStop = function() {
 	$('#closestStops').on('change', function() {
+		$('#routesAtStop').fadeOut();
 		$("#routesAtStop").empty();
   		var selectedStop = $(this).val();
   		userStopInfo=[];
