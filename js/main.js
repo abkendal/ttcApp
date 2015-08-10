@@ -8,6 +8,7 @@ var closestStopsLat = [];
 var closestStopsLng = [];
 var routeName = [];
 var map;
+var markers = [];
 var userStopInfo = [];
 var routeName = [];
  //USER STOP INFO LEGEND: (please keep here for now!)
@@ -194,7 +195,30 @@ app.getUserRoute = function(userRoute) {
 		if (ampm==='p') {
 			busSeconds = busSeconds + 43200;
 		};
+
 		app.compareTime(busSeconds, currentSeconds);
+
+		if (minutesTillBus < 0) {
+			nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[2].departure_time;
+			// Store the am/pm marker 
+  			var ampm = nextBusTime.slice(-1);
+
+			// Remove am/pm marker from the end of time string
+			nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
+			// Add seconds in order to standardize time string format
+			nextBusTime = nextBusTime+":00";
+
+			console.log(nextBusTime);
+
+			// Convert time into seconds and add 12 hours if time is in pm
+			var a = nextBusTime.split(':');
+			busSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+			if (ampm==='p') {
+				busSeconds = busSeconds + 43200;
+			};
+			
+			app.compareTime(busSeconds, currentSeconds);
+		};
 
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
 		$('.mapCover').fadeOut('slow');
@@ -233,7 +257,7 @@ app.compareTime = function(busTime, currentTime) {
 	$('#suggestionText').text(suggestionText);
 
 	// Only look for places if there is more than 5 minutes until the next bus
-	if (minutesTillBus >= 5) {
+	if (minutesTillBus >= 5 || minutesTillBus < -50) {
 		app.getPlaces(minutesTillBus);
 	};
 }
@@ -243,29 +267,32 @@ app.compareTime = function(busTime, currentTime) {
 app.getPlaces = function(time) {
 	var request = {
 	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
-	    // rankBy: google.maps.places.RankBy.DISTANCE,
 	    radius: '', 
 	    types: []
 	  };
-
-	  if (time <7.5) {
-	  	request.radius = 50;
-	  	request.types = ['cafe', 'store'];
+	  if (time < -50) {
+	  	request.radius = 500;
+	  	request.types = ['cafe', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant'];
+	  	// request.types = ['convenience_store'];
+	  }
+	  else if (time <7.5) {
+	  	request.radius = 75;
+	  	request.types = ['cafe', 'convenience_store', 'bakery'];
 	  } 
 
 	  else if (time <10) {
 	  	request.radius = 100;
-	  	request.types = ['cafe', 'store'];
+	  	request.types = ['cafe', 'convenience_store', 'bakery'];
 	  } 
 
 	  else if (time <15) {
 	  	request.radius = 150;
-	  	request.types = ['cafe', 'store'];
+	  	request.types = ['cafe', 'convenience_store', 'bakery'];
 	  } 
 
 	  else {
 	  	request.radius = 150;
-	  	request.types = ['cafe', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant'];
+	  	request.types = ['cafe', 'convenience_store', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant', 'bakery'];
 	  };
 
 	  infowindow = new google.maps.InfoWindow();
