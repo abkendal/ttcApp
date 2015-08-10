@@ -67,7 +67,7 @@
 <!-- User Select Stop-->
 	<section class="inputSection">
 		<div class="userInput">
-			<select id="closestStops"class="styles hide">
+			<select id="closestStops"class=" hide">
 				<!-- INJECT CLOSEST STOPS BASED ON USER'S GEOLOCATION HERE -->
 			</select>
 		</div>
@@ -77,11 +77,16 @@
 	<section class="inputSection"> 
 		<div class="loadingWrapper hide">
 			<div class="loadingBar">
-				Loading Bar Test!
-		<!-- loading bar image here; feel free to change the classes as needed -->
+				<div>
+					<img class="loadingBar_image" src="loading-bar.png" alt="loading bar that looks like a subway map">
+				</div>
+				<div class="loadingLight">
+					<div class="light lightOne"></div>
+					<!-- <div class="light lightTwo"></div>
+					<div class="light lightThree"></div> -->	
+				</div>
 			</div>
 		</div>
-		
 		<div class="userInput"> 
 			<select id="routesAtStop" class="styles hide">
 				<!-- INJECT  ROUTES BASED ON USER'S SELECTED STOP -->
