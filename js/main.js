@@ -32,7 +32,7 @@ app.refresh = function() {
 }
 
 //LOGO FADE IN AND OUT
-$('#overlay').fadeIn('fast').delay(2000).fadeOut('slow');
+$('#overlay').fadeIn('fast').delay(3000).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
@@ -67,11 +67,6 @@ app.updatePosition = function(position) {
 app.geoError = function(){
 	 alert("No location info available. Error code: " + error.code);
 };
-//DROP DOWN STYLES
-$(function(){
-	$('select.styled').addClass("customSelect");
-});
-
 
 //API REQUEST FOR STOPS
 app.getStops = function(lat, lon){
@@ -159,12 +154,14 @@ app.filterRouteName = function(stops){
 	for(i = 0; i < stops.stops[0].routes.length; i++){
 		app.displayRoute(stops.stops[0].routes[i].uri, i);
 	}
+	$('.loadingWrapper').fadeOut(0);//HIDE LOADING BAR AFTER ROUTES ARE APPENDED INTO DROPDOWN
+
 };
 //DISPLAYING ROUTES IN DROP DOWN 
 app.displayRoute = function(routes, key) {
 	var $routeName = $("<option>").val(key).text(routes);
+	//moved loading bar to filterRouteName
 	$("#routesAtStop").append($routeName);
-	$('.loadingWrapper').fadeOut(); //HIDE LOADING BAR AFTER ROUTES ARE APPENDED INTO DROPDOWN
 	$('#routesAtStop').fadeIn('slow').removeClass('hide');
 };
 //STORE SELECTED ROUTE IN VARIABLE
