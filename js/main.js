@@ -177,7 +177,7 @@ app.getUserRoute = function(userRoute) {
 		app.getTime();
 
 		var selectedRoute = $('#routesAtStop :selected').val();
-  		nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[1].departure_time;
+  		nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[0].departure_time;
 		
   		// Store the am/pm marker 
   		var ampm = nextBusTime.slice(-1);
@@ -187,7 +187,7 @@ app.getUserRoute = function(userRoute) {
 		// Add seconds in order to standardize time string format
 		nextBusTime = nextBusTime+":00";
 
-		console.log(nextBusTime);
+		// console.log(nextBusTime);
 
 		// Convert time into seconds and add 12 hours if time is in pm
 		var a = nextBusTime.split(':');
@@ -198,8 +198,9 @@ app.getUserRoute = function(userRoute) {
 
 		app.compareTime(busSeconds, currentSeconds);
 
+		// If the first bus has already passed (ie negative time) then grab the second bus
 		if (minutesTillBus < 0) {
-			nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[2].departure_time;
+			nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[1].departure_time;
 			// Store the am/pm marker 
   			var ampm = nextBusTime.slice(-1);
 
@@ -208,7 +209,7 @@ app.getUserRoute = function(userRoute) {
 			// Add seconds in order to standardize time string format
 			nextBusTime = nextBusTime+":00";
 
-			console.log(nextBusTime);
+			// console.log(nextBusTime);
 
 			// Convert time into seconds and add 12 hours if time is in pm
 			var a = nextBusTime.split(':');
@@ -218,6 +219,29 @@ app.getUserRoute = function(userRoute) {
 			};
 			
 			app.compareTime(busSeconds, currentSeconds);
+
+			// If the second bus has also already passed, grab the third bus
+			if (minutesTillBus < 0) {
+				nextBusTime = routeResponse.stops[0].routes[selectedRoute].stop_times[2].departure_time;
+				// Store the am/pm marker 
+	  			var ampm = nextBusTime.slice(-1);
+
+				// Remove am/pm marker from the end of time string
+				nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
+				// Add seconds in order to standardize time string format
+				nextBusTime = nextBusTime+":00";
+
+				// console.log(nextBusTime);
+
+				// Convert time into seconds and add 12 hours if time is in pm
+				var a = nextBusTime.split(':');
+				busSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+				if (ampm==='p') {
+					busSeconds = busSeconds + 43200;
+				};
+				
+				app.compareTime(busSeconds, currentSeconds);
+			};
 		};
 
 		// $('#routesAtStop').fadeOut('slow').addClass('hide');
