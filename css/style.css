@@ -294,9 +294,13 @@ h2 {
     display: block;
     margin-right: 2.35765%;
     width: 65.88078%;
-    margin-left: 17.05961%; }
+    margin-left: 17.05961%;
+    overflow: hidden; }
     .loadingWrapper .loadingBar:last-child {
       margin-right: 0; }
+    .loadingWrapper .loadingBar img {
+      height: 100%;
+      background: #5195C2; }
     .loadingWrapper .loadingBar .loadingDot {
       float: left;
       display: block;

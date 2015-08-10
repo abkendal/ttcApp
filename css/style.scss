@@ -190,7 +190,12 @@ h2{
 	.loadingBar {
 		@include span-columns(8);
 		@include shift(2);
+		overflow: hidden;
 
+			img{
+				height: 100%;
+				background:$blue;
+			}
 		.loadingDot { //half-attempted CSS, can delete later
 			@include span-columns(2.67);
 			height: 5vh;
@@ -202,6 +207,11 @@ h2{
 		}
 	}
 }
+// .loadingLight{
+// 	height:100%;
+// 	width: 100%;
+// 	background: $blue;
+// }
 //DROP DOWN STYLES
 //*****************************
 select{
