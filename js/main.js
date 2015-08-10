@@ -99,9 +99,7 @@ app.getUserStop = function() {
   		var selectedStop = $(this).val();
   		userStopInfo=[];
   		userStopInfo.push(closestStopsName[selectedStop], closestStopsURI[selectedStop], closestStopsLat[selectedStop], closestStopsLng[selectedStop]);
-  		// console.log(userStopInfo);
   		app.displayStopMarker();
-  		// app.getPlaces();
   		app.getRoute();
   		// HIDE closestStops DROP-DOWN HERE
   		// $(this).fadeOut('slow').addClass('hide');
@@ -159,8 +157,6 @@ app.filterRouteName = function(stops){
 	$("#routesAtStop").append($firstRouteOption);
 	for(i = 0; i < stops.stops[0].routes.length; i++){
 		app.displayRoute(stops.stops[0].routes[i].uri, i);
-		// console.log(stops);
-		// console.log(stops.stops[0].routes[i].uri);
 	}
 };
 //DISPLAYING ROUTES IN DROP DOWN 
@@ -187,8 +183,6 @@ app.getUserRoute = function(userRoute) {
 		// Add seconds in order to standardize time string format
 		nextBusTime = nextBusTime+":00";
 
-		// console.log(nextBusTime);
-
 		// Convert time into seconds and add 12 hours if time is in pm
 		var a = nextBusTime.split(':');
 		busSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
@@ -208,8 +202,6 @@ app.getUserRoute = function(userRoute) {
 			nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
 			// Add seconds in order to standardize time string format
 			nextBusTime = nextBusTime+":00";
-
-			// console.log(nextBusTime);
 
 			// Convert time into seconds and add 12 hours if time is in pm
 			var a = nextBusTime.split(':');
@@ -231,8 +223,6 @@ app.getUserRoute = function(userRoute) {
 				// Add seconds in order to standardize time string format
 				nextBusTime = nextBusTime+":00";
 
-				// console.log(nextBusTime);
-
 				// Convert time into seconds and add 12 hours if time is in pm
 				var a = nextBusTime.split(':');
 				busSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
@@ -253,21 +243,16 @@ app.getUserRoute = function(userRoute) {
 
 // GET CURRENT TIME
 app.getTime = function() {
-	// var time = $.now();
-	// console.log(time);
 	var dt = new Date();
 	time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
 	var a = time.split(':');
 	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-
-	console.log(time);
 };
 
 // CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
 app.compareTime = function(busTime, currentTime) {
 	minutesTillBus = (busTime - currentTime) / 60;
 	minutesTillBus = minutesTillBus.toFixed(2); 
-	console.log(minutesTillBus);
 	if (minutesTillBus < -50) {
 		var suggestionText = "Your bus 'aint comin' for a looooooong time!"
 	}
@@ -280,14 +265,14 @@ app.compareTime = function(busTime, currentTime) {
 	}
 	$('#suggestionText').text(suggestionText);
 
-	// Only look for places if there is more than 5 minutes until the next bus
+	// Only look for places if there is more than 5 minutes until the next bus or night bus
 	if (minutesTillBus >= 5 || minutesTillBus < -50) {
 		app.getPlaces(minutesTillBus);
 	};
 }
 
 
-
+// Query google places based on location and time until next bus
 app.getPlaces = function(time) {
 	var request = {
 	    location: new google.maps.LatLng(userStopInfo[2], userStopInfo[3]),
@@ -296,8 +281,7 @@ app.getPlaces = function(time) {
 	  };
 	  if (time < -50) {
 	  	request.radius = 500;
-	  	request.types = ['cafe', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant'];
-	  	// request.types = ['convenience_store'];
+	  	request.types = ['cafe', 'convenience_store', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant', 'bakery', 'liquor_store'];
 	  }
 	  else if (time <7.5) {
 	  	request.radius = 75;
@@ -316,7 +300,7 @@ app.getPlaces = function(time) {
 
 	  else {
 	  	request.radius = 150;
-	  	request.types = ['cafe', 'convenience_store', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant', 'bakery'];
+	  	request.types = ['cafe', 'convenience_store', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant', 'bakery', 'liquor_store'];
 	  };
 
 	  infowindow = new google.maps.InfoWindow();
