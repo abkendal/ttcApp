@@ -32,7 +32,7 @@ app.refresh = function() {
 }
 
 //LOGO FADE IN AND OUT
-$('#overlay').fadeIn('fast').delay(2000).fadeOut('slow');
+// $('#overlay').fadeIn('fast').delay(2000).fadeOut('slow');
 
 app.getGeo = function(){
 	$.geolocation.get({win: app.updatePosition, fail: app.geoError});
