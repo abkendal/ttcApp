@@ -246,7 +246,8 @@ app.getTime = function() {
 	time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
 	console.log(time);
 	var a = time.split(':');
-	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]) + 43200;
+	// 43200
+	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
 };
 
 // CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
