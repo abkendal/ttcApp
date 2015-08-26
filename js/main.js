@@ -180,6 +180,7 @@ app.getUserRoute = function(userRoute) {
 		nextBusTime = nextBusTime.substring(0, nextBusTime.length - 1);
 		// Add seconds in order to standardize time string format
 		nextBusTime = nextBusTime+":00";
+		console.log("nextBusTime = "+ nextBusTime);
 
 		// Convert time into seconds and add 12 hours if time is in pm
 		var a = nextBusTime.split(':');
@@ -243,14 +244,18 @@ app.getUserRoute = function(userRoute) {
 app.getTime = function() {
 	var dt = new Date();
 	time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	console.log(time);
 	var a = time.split(':');
-	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+	currentSeconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]) + 43200;
 };
 
 // CALCULATE TIME UNTIL NEXT BUS AND DISPLAY ON SCREEN
 app.compareTime = function(busTime, currentTime) {
 	minutesTillBus = (busTime - currentTime) / 60;
 	minutesTillBus = minutesTillBus.toFixed(2); 
+	console.log(busTime);
+	console.log(currentTime);
+	console.log(minutesTillBus);
 	if (minutesTillBus < -50) {
 		var suggestionText = "Your bus 'aint comin' for a looooooong time!"
 	}
@@ -259,7 +264,7 @@ app.compareTime = function(busTime, currentTime) {
 	} else if (minutesTillBus < 15) {
 		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time for something quick like a coffee shop or convenience store."
 	} else {
-		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to explore!"
+		var suggestionText = "You have " + minutesTillBus + " minutes until your next bus. You've got time to check out a retail store or grab some take out."
 	}
 	$('#suggestionText').text(suggestionText);
 
@@ -287,17 +292,17 @@ app.getPlaces = function(time) {
 	  } 
 
 	  else if (time <10) {
-	  	request.radius = 100;
+	  	request.radius = 150;
 	  	request.types = ['cafe', 'convenience_store', 'bakery'];
 	  } 
 
 	  else if (time <15) {
-	  	request.radius = 150;
+	  	request.radius = 200;
 	  	request.types = ['cafe', 'convenience_store', 'bakery'];
 	  } 
 
 	  else {
-	  	request.radius = 150;
+	  	request.radius = 200;
 	  	request.types = ['cafe', 'convenience_store', 'store',  'book_store', 'meal_takeaway', 'food', 'restaurant', 'bakery', 'liquor_store'];
 	  };
 
