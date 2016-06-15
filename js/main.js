@@ -71,7 +71,7 @@ app.geoError = function(){
 //API REQUEST FOR STOPS
 app.getStops = function(lat, lon){
 	$.ajax({
-		url:'http://myttc.ca/near/' + lat + ',' + lon + '.json',
+		url:'https://myttc.ca/near/' + lat + ',' + lon + '.json',
 		type: 'GET',
 		dataType: 'jsonp',
 		success: function(response){
@@ -131,7 +131,7 @@ app.displayStopMarker = function() {
 //API ROUTES #2
 app.getRoute = function(){
 	$.ajax({
-		url: "http://myttc.ca/" + userStopInfo[1] + ".json",
+		url: "https://myttc.ca/" + userStopInfo[1] + ".json",
 		type: "GET",
 		dataType: "jsonp",
 		data: {
